@@ -59,7 +59,19 @@ THE SOFTWARE.
           <st:include page="${descriptor.globalConfigPage}" from="${descriptor}" />
         </f:rowSet>
       </j:forEach>
-
+    
+      <f:entry title="Telegram Notifications" help="">
+      </f:entry>
+        <f:entry field="tgm_bot_id" title="Bot ID">
+          <f:textbox/>
+        </f:entry>
+        <f:entry field="tgm_bot_token" title="Bot Token">
+          <f:textbox/>
+        </f:entry>
+        <f:entry field="tgm_group_id" title="Group ID">
+          <f:textbox/>
+        </f:entry>    
+    
       <f:bottomButtonBar>
         <f:submit value="${%Save}" />
         <f:apply value="${%Apply}"/>

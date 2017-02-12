@@ -509,6 +509,7 @@ THE SOFTWARE.
           <artifactId>findbugs-maven-plugin</artifactId>
           <version>${findbugs-maven-plugin.version}</version>
           <configuration>
+			<skip>true</skip>
             <effort>Max</effort>
             <threshold>High</threshold>
             <!--Excludes file is located on the top level-->
