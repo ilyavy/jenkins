@@ -391,6 +391,12 @@ THE SOFTWARE.
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.19.1</version> <!-- ignoring ${maven-surefire-plugin.version} -->
           <configuration>
+			<excludes>
+				<exclude>**/*SecretRewriterTest.java</exclude>
+				<exclude>**/*UtilTest.java</exclude>
+				<exclude>**/*RunIdMigratorTest.java</exclude>
+				<exclude>**/*VirtualFileTest.java</exclude>
+            </excludes>
             <argLine>-noverify</argLine> <!-- some versions of JDK7/8 causes VerifyError during mock tests: http://code.google.com/p/powermock/issues/detail?id=504 -->
             <systemPropertyVariables>
               <java.io.tmpdir>${project.build.directory}</java.io.tmpdir>
