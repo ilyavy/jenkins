@@ -52,7 +52,7 @@ public class TelegramApi {
      * @return - String representation of the response (json)
      * @throws IOException 
      */
-    public String sendMessage(String message) throws IOException {
+    public String sendMessage(final String message) throws IOException {
         StringBuilder sb = new StringBuilder();
         sb.append("https://api.telegram.org/bot");
         sb.append(botId);

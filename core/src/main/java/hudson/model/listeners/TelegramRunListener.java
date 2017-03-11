@@ -14,14 +14,25 @@ import ru.telegram.bot.TelegramApi;
 public class TelegramRunListener<R extends Run> extends RunListener<R> {
     private TelegramApi tapi;
     
+    /**
+     * Default constructor for testing purposes only!!!
+     */
     public TelegramRunListener() {
+        this("309671090", "AAF2bRdghkIE2qTgOaYon2FTQcHlAuwjRJ8",
+                "-173759723");
+    }
+
+    
+    public TelegramRunListener(String tgm_bot_id, 
+            String tgm_bot_token, String tgm_group_id) {
         super();
         
-        tapi = new TelegramApi("309671090",
-                "AAF2bRdghkIE2qTgOaYon2FTQcHlAuwjRJ8", "-173759723");
+        tapi = new TelegramApi(tgm_bot_id,
+                tgm_bot_token, tgm_group_id);
         
         System.out.println("INNO > TRL.construct()");
     }
+    
     
     @Override
     public void onStarted(R r, TaskListener listener) {
