@@ -1,6 +1,10 @@
 package hudson.model.listeners;
 
+import java.io.IOException;
+import java.io.StringWriter;
+
 import hudson.Extension;
+import hudson.model.Result;
 import hudson.model.Run;
 import hudson.model.TaskListener;
 import ru.telegram.bot.TelegramApi;
@@ -53,13 +57,35 @@ public class TelegramRunListener<R extends Run> extends RunListener<R> {
     
     @Override
     public void onCompleted(R r, TaskListener listener) {
-        String message = "Build " + r.getFullDisplayName() + 
-                " has finished for " + r.getDurationString();
+        StringBuilder mesBuilder = new StringBuilder();
+        mesBuilder.append("Build ");
+        mesBuilder.append(r.getFullDisplayName());
+        mesBuilder.append(" has finished for ");
+        mesBuilder.append(r.getDurationString().replaceAll("секунд", "s"));
+        mesBuilder.append(". Finished: ");
+        mesBuilder.append(r.getResult());
+        
+        String log = null;
+        if (!r.getResult().equals(Result.SUCCESS)) {
+            try {
+                StringWriter wr = new StringWriter();
+                r.getLogText().writeLogTo(0, wr);
+                log = wr.toString();
+                
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        String message = mesBuilder.toString();
 
         try {
             tapi.sendMessage(message);
             listener.getLogger().println(
                     "Telegram notification should have been sent");
+            if (log != null) {
+                tapi.sendMessage(log);
+            }
             
         } catch (Exception e) {
             listener.getLogger().println(
