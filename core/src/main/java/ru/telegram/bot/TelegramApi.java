@@ -62,7 +62,7 @@ public class TelegramApi {
         sb.append("chat_id=");
         sb.append(groupId);
         sb.append("&text=");
-        sb.append(URLEncoder.encode(message, "UTF-8"));
+        sb.append(URLEncoder.encode(message, "UTF-8").replaceAll("'", " "));
         
         HttpsURLConnection urlConn = null;
         URL url;
