@@ -61,7 +61,7 @@ public class TelegramRunListener<R extends Run> extends RunListener<R> {
         mesBuilder.append("Build ");
         mesBuilder.append(r.getFullDisplayName());
         mesBuilder.append(" has finished for ");
-        mesBuilder.append(r.getDurationString().replaceAll("секунд", "s"));
+        mesBuilder.append(r.getDurationString().replaceAll("секунд", "s")); // issue #1
         mesBuilder.append(". Finished: ");
         mesBuilder.append(r.getResult());
         
