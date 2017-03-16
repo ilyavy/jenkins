@@ -1,5 +1,6 @@
 package hudson.model.listeners;
 
+import hudson.model.Result;
 import hudson.model.Run;
 import hudson.model.TaskListener;
 import org.junit.Before;
@@ -40,6 +41,7 @@ public class TelegramRunListenerTest {
         when(taskListener.getLogger()).thenReturn(printStream);
         when(r.getFullDisplayName()).thenReturn(displayName);
         when(r.getDurationString()).thenReturn(durationStr);
+        when(r.getResult()).thenReturn(Result.SUCCESS);
     }
 
     @Test
@@ -54,9 +56,9 @@ public class TelegramRunListenerTest {
     }
 
     @Test
-    public void onCompletedSuccessTest() throws Exception {
+    public void onCompletedSuccessTest1() throws Exception {
         String message = "Build " + r.getFullDisplayName() +
-                " has finished for " + r.getDurationString();
+                " has finished for " + r.getDurationString() + ". Finished: " + r.getResult();
         String notificationLog = "Telegram notification should have been sent";
 
         telegramRunListener.onCompleted(r, taskListener);
@@ -85,7 +87,7 @@ public class TelegramRunListenerTest {
                 .when(telegramApi).sendMessage(any(String.class));
 
         String message = "Build " + r.getFullDisplayName() +
-                " has finished for " + r.getDurationString();
+                " has finished for " + r.getDurationString() + ". Finished: " + r.getResult();
         String notificationLog = "Error. Telegram notification wasn't sent";
 
         telegramRunListener.onCompleted(r, taskListener);
