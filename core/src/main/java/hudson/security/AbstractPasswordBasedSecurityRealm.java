@@ -2,7 +2,6 @@ package hudson.security;
 
 import groovy.lang.Binding;
 import hudson.FilePath;
-import hudson.cli.CLICommand;
 import hudson.util.spring.BeanBuilder;
 import java.io.Console;
 import java.io.IOException;
@@ -50,39 +49,6 @@ public abstract class AbstractPasswordBasedSecurityRealm extends SecurityRealm i
                 new ImpersonatingUserDetailsService(this));
     }
 
-    @Override
-    public CliAuthenticator createCliAuthenticator(final CLICommand command) {
-        return new CliAuthenticator() {
-            @Option(name="--username",usage="User name to authenticate yourself to Jenkins")
-            public String userName;
-
-            @Option(name="--password",usage="Password for authentication. Note that passing a password in arguments is insecure.")
-            public String password;
-
-            @Option(name="--password-file",usage="File that contains the password")
-            public String passwordFile;
-
-            public Authentication authenticate() throws AuthenticationException, IOException, InterruptedException {
-                if (userName==null)
-                    return command.getTransportAuthentication();    // no authentication parameter. fallback to the transport
-
-                if (passwordFile!=null)
-                    try {
-                        password = new FilePath(command.channel,passwordFile).readToString().trim();
-                    } catch (IOException e) {
-                        throw new BadCredentialsException("Failed to read "+passwordFile,e);
-                    }
-                if (password==null)
-                    password = command.channel.call(new InteractivelyAskForPassword());
-
-                if (password==null)
-                    throw new BadCredentialsException("No password specified");
-
-                UserDetails d = doAuthenticate(userName, password);
-                return new UsernamePasswordAuthenticationToken(d, password, d.getAuthorities());
-            }
-        };
-    }
 
     /**
      * Authenticate a login attempt.

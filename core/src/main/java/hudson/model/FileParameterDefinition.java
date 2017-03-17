@@ -29,7 +29,6 @@ import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.StaplerRequest;
 import hudson.Extension;
 import hudson.FilePath;
-import hudson.cli.CLICommand;
 import org.apache.commons.fileupload.FileItem;
 
 import java.io.IOException;
@@ -97,18 +96,5 @@ public class FileParameterDefinition extends ParameterDefinition {
         possiblyPathName = possiblyPathName.substring(possiblyPathName.lastIndexOf('/')+1);
         possiblyPathName = possiblyPathName.substring(possiblyPathName.lastIndexOf('\\')+1);
         return possiblyPathName;
-    }
-
-    @Override
-    public ParameterValue createValue(CLICommand command, String value) throws IOException, InterruptedException {
-        // capture the file to the server
-        FilePath src = new FilePath(command.checkChannel(),value);
-        File local = File.createTempFile("jenkins","parameter");
-        src.copyTo(new FilePath(local));
-
-        FileParameterValue p = new FileParameterValue(getName(), local, src.getName());
-        p.setDescription(getDescription());
-        p.setLocation(getName());
-        return p;
     }
 }

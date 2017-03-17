@@ -29,7 +29,6 @@ import hudson.ExtensionListView;
 import hudson.Functions;
 import hudson.Platform;
 import hudson.PluginManager;
-import hudson.cli.declarative.CLIResolver;
 import hudson.model.listeners.ItemListener;
 import hudson.slaves.ComputerListener;
 import hudson.util.CopyOnWriteList;
@@ -71,7 +70,6 @@ public class Hudson extends Jenkins {
 
     /** @deprecated Here only for compatibility. Use {@link Jenkins#getInstance} instead. */
     @Deprecated
-    @CLIResolver
     @Nonnull
     public static Hudson getInstance() {
         return (Hudson)Jenkins.getInstance();
