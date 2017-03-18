@@ -63,7 +63,7 @@ THE SOFTWARE.
       <f:entry title="Telegram Notifications" help="">
       </f:entry>
         <f:entry title="Send notifications?" field="send_tg_notifications" description="If checked, this will send messages to telegram your bot.">
-          <f:checkbox value="${it.telegramNotify}"/>
+          <f:checkbox checked="${it.telegramNotify}"/>
         </f:entry>
         <f:entry field="tgm_bot_id" title="Bot ID">
           <f:textbox value="${it.telegramBotID}"/>

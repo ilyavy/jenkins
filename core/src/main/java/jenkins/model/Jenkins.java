@@ -412,7 +412,7 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
     /**
      * On/off Telegram notifications
      */
-    private boolean telegramNotify = false;
+    private boolean telegramNotify;
 
     /**
      * Bot id for Telegram notifications
@@ -441,7 +441,7 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
         return telegramGroupID;
     }
 
-    public boolean getTelegramNotify() {
+    public boolean isTelegramNotify() {
         return telegramNotify;
     }
 

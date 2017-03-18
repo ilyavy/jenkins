@@ -43,7 +43,7 @@ public class TelegramRunListener<R extends Run> extends RunListener<R> {
 
     @Override
     public void onStarted(R r, TaskListener listener) {
-        if(j.getTelegramNotify()) {
+        if(j.isTelegramNotify()) {
             String message = "Build " +
                     r.getFullDisplayName() + " has started";
 
@@ -58,7 +58,7 @@ public class TelegramRunListener<R extends Run> extends RunListener<R> {
     
     @Override
     public void onCompleted(R r, TaskListener listener) {
-        if(j.getTelegramNotify()) {
+        if(j.isTelegramNotify()) {
             StringBuilder mesBuilder = new StringBuilder();
             mesBuilder.append("Build ");
             mesBuilder.append(r.getFullDisplayName());
