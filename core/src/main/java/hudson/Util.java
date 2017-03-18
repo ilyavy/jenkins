@@ -91,6 +91,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.kohsuke.args4j.spi.Messages;
 
 /**
  * Various utility methods that don't have more proper home.
@@ -894,6 +895,30 @@ public class Util {
             return Messages.Util_millisecond(millisecs);
     }
 
+    public static String getTimeSpanStringEnglish(long duration) {
+
+        StringBuilder sb = new StringBuilder();
+
+        long hours = duration / ONE_HOUR_MS;
+        duration %= ONE_HOUR_MS;
+        long minutes = duration / ONE_MINUTE_MS;
+        duration %= ONE_MINUTE_MS;
+        long seconds = duration / ONE_SECOND_MS;
+        duration %= ONE_SECOND_MS;
+        long millisecs = duration;
+
+        if (hours > 0)
+            return makeTimeSpanStringEnglish(sb, hours, "hours", minutes, "minutes");
+        else if (minutes > 0)
+            return makeTimeSpanStringEnglish(sb, minutes, "minutes", seconds, "seconds");
+        else if (seconds >= 1)
+            return sb.append(seconds+" seconds").toString();
+        else if (millisecs>=100)
+            return sb.append((float)(millisecs/10)/100+" seconds").toString(); // render "0.12 sec".
+        else
+            return sb.append(millisecs+" millisecs").toString();
+    }
+
 
     /**
      * Create a string representation of a time duration.  If the quantity of
@@ -909,12 +934,24 @@ public class Util {
                                              @Nonnull String bigLabel,
                                              long smallUnit,
                                              @Nonnull String smallLabel) {
-        String text = bigLabel;
+        StringBuilder text = new StringBuilder();
+        text.append(bigUnit+" hours ");
         if (bigUnit < 10)
-            text += ' ' + smallLabel;
-        return text;
+            text.append(smallUnit+" minutes ");
+        return text.toString();
     }
 
+    private static String makeTimeSpanStringEnglish(StringBuilder text, long bigUnit,
+                                                    @Nonnull String bigLabel,
+                                                    long smallUnit,
+                                                    @Nonnull String smallLabel) {
+        if (bigUnit < 10)
+            if (smallUnit >0)
+                text.append(bigUnit+' '+bigLabel+' '+smallUnit+' '+smallLabel);
+            else
+                text.append(bigUnit+' '+bigLabel);
+        return text.toString();
+    }
 
     /**
      * Get a human readable string representing strings like "xxx days ago",

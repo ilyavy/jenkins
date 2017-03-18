@@ -118,6 +118,7 @@ import org.apache.commons.jelly.XMLOutput;
 import org.apache.commons.lang.ArrayUtils;
 import org.kohsuke.accmod.Restricted;
 import org.kohsuke.accmod.restrictions.NoExternalUse;
+import org.kohsuke.args4j.spi.Messages;
 import org.kohsuke.stapler.HttpResponse;
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.Stapler;
@@ -737,6 +738,10 @@ public abstract class Run <JobT extends Job<JobT,RunT>,RunT extends Run<JobT,Run
     @Exported
     public long getDuration() {
         return duration;
+    }
+
+    public String getDurationStringEnglish() {
+        return Util.getTimeSpanStringEnglish(duration);
     }
 
     /**
