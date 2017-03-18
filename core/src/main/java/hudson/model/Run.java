@@ -739,6 +739,10 @@ public abstract class Run <JobT extends Job<JobT,RunT>,RunT extends Run<JobT,Run
         return duration;
     }
 
+    public String getDurationStringEnglish() {
+        return Util.getTimeSpanStringEnglish(duration);
+    }
+
     /**
      * Gets the icon color for display.
      */
