@@ -1,49 +1,32 @@
 package ru.telegram.bot;
 
+import jenkins.model.Jenkins;
+
+import javax.net.ssl.HttpsURLConnection;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-
-import javax.net.ssl.HttpsURLConnection;
+import java.util.logging.Logger;
 
 /**
  * API for telegram notifications
  */
 public class TelegramApi {
-    private final String botId;
-    private final String token;
-    private final String groupId;
-    
-    
-    public String getBotId() {
-        return botId;
-    }
 
-    public String getToken() {
-        return token;
-    }
+    private static final Logger LOGGER = Logger.getLogger(TelegramApi.class.getName());
 
-    public String getGroupId() {
-        return groupId;
-    }
-    
     /**
-     * Constructor
-     * @param botId - bot's id
-     * @param token - bot's token
-     * @param groupId - id of the group, which has the
-     * specified bot as a member and where notifications
-     * will be sent
+     * Jenkins instance used to get bot id, token and group_id
      */
-    public TelegramApi(final String botId,
-            final String token, final String groupId) {
-        this.botId = botId;
-        this.token = token;
-        this.groupId = groupId;
+    private final Jenkins j;
+
+    /**
+     * Default constructor
+     */
+    public TelegramApi(){
+        j = Jenkins.getInstance();
     }
     
     /**
@@ -55,20 +38,19 @@ public class TelegramApi {
     public String sendMessage(final String message) throws IOException {
         StringBuilder sb = new StringBuilder();
         sb.append("https://api.telegram.org/bot");
-        sb.append(botId);
+        sb.append(j.getTelegramBotID());
         sb.append(":");
-        sb.append(token);
+        sb.append(j.getTelegramBotToken());
         sb.append("/sendMessage?");
         sb.append("chat_id=");
-        sb.append(groupId);
+        sb.append(j.getTelegramGroupID());
         sb.append("&text=");
         sb.append(URLEncoder.encode(message, "UTF-8").replaceAll("'", " "));
         
         HttpsURLConnection urlConn = null;
         URL url;
         url = new URL(sb.toString());
-        System.out.println(
-                "TelegramAPI > message will be sent using url: " + url);
+        LOGGER.info("TelegramAPI > message will be sent using url: " + url);
         
         urlConn = (HttpsURLConnection) url.openConnection();
         urlConn.connect();

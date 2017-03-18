@@ -62,14 +62,17 @@ THE SOFTWARE.
     
       <f:entry title="Telegram Notifications" help="">
       </f:entry>
+        <f:entry title="Send notifications?" field="send_tg_notifications" description="If checked, this will send messages to telegram your bot.">
+          <f:checkbox value="${it.telegramNotify}"/>
+        </f:entry>
         <f:entry field="tgm_bot_id" title="Bot ID">
-          <f:textbox/>
+          <f:textbox value="${it.telegramBotID}"/>
         </f:entry>
         <f:entry field="tgm_bot_token" title="Bot Token">
-          <f:textbox/>
+          <f:textbox value="${it.telegramBotToken}"/>
         </f:entry>
         <f:entry field="tgm_group_id" title="Group ID">
-          <f:textbox/>
+          <f:textbox value="${it.telegramGroupID}"/>
         </f:entry>    
     
       <f:bottomButtonBar>
