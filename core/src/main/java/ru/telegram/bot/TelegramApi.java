@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.logging.Logger;
 
 /**
@@ -41,11 +43,20 @@ public class TelegramApi {
         sb.append(j.getTelegramBotID());
         sb.append(":");
         sb.append(j.getTelegramBotToken());
-        sb.append("/sendMessage?");
-        sb.append("chat_id=");
-        sb.append(j.getTelegramGroupID());
-        sb.append("&text=");
-        sb.append(URLEncoder.encode(message, "UTF-8").replaceAll("'", " "));
+        sb.append("/sendMessage");
+
+        Map<String,Object> params = new LinkedHashMap<>();
+        params.put("chat_id", j.getTelegramGroupID());
+        params.put("text", message);
+
+        StringBuilder postData = new StringBuilder();
+        for (Map.Entry<String,Object> param : params.entrySet()) {
+            if (postData.length() != 0) postData.append('&');
+            postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
+            postData.append('=');
+            postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
+        }
+        byte[] postDataBytes = postData.toString().getBytes("UTF-8");
         
         HttpsURLConnection urlConn = null;
         URL url;
@@ -53,6 +64,11 @@ public class TelegramApi {
         LOGGER.info("TelegramAPI > message will be sent using url: " + url);
         
         urlConn = (HttpsURLConnection) url.openConnection();
+        urlConn.setRequestMethod("POST");
+        urlConn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+        urlConn.setRequestProperty("Content-Length", String.valueOf(postDataBytes.length));
+        urlConn.setDoOutput(true);
+        urlConn.getOutputStream().write(postDataBytes);
         urlConn.connect();
         
         StringBuilder response = new StringBuilder();
