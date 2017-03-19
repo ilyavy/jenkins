@@ -375,6 +375,9 @@ THE SOFTWARE.
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
           <version>2.10.3</version>
+          <configuration>
+              <additionalparam>-Xdoclint:none</additionalparam>
+          </configuration>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -396,7 +399,6 @@ THE SOFTWARE.
 				<exclude>**/*UtilTest.java</exclude>
 				<exclude>**/*RunIdMigratorTest.java</exclude>
 				<exclude>**/*VirtualFileTest.java</exclude>
-				<exclude>**/*TelegramRunListenerTest.java</exclude>
             </excludes>
             <argLine>-noverify</argLine> <!-- some versions of JDK7/8 causes VerifyError during mock tests: http://code.google.com/p/powermock/issues/detail?id=504 -->
             <systemPropertyVariables>
