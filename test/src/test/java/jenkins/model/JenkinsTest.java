@@ -44,6 +44,7 @@ import com.gargoylesoftware.htmlunit.WebResponse;
 import com.gargoylesoftware.htmlunit.html.HtmlForm;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
+import hudson.XmlFile;
 import hudson.maven.MavenModuleSet;
 import hudson.maven.MavenModuleSetBuild;
 import hudson.model.Computer;
@@ -76,6 +77,7 @@ import org.kohsuke.stapler.HttpResponse;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -284,6 +286,31 @@ public class JenkinsTest {
         // make sure these changes are effective
         assertTrue(b.getWorkspace().getRemote().contains("test12251_ws"));
         assertTrue(b.getRootDir().toString().contains("test12251_builds"));
+    }
+
+    @Test
+    public void testTelegramSettingsSaved() throws Exception {
+        final String botId = "123";
+        final String token = "test123";
+        final String groupId = "group123";
+
+        HtmlForm f = j.createWebClient().goTo("configure").getFormByName("config");
+        f.getInputByName("_.send_tg_notifications").setChecked(true);
+        f.getInputByName("_.tgm_bot_id").setValueAttribute(botId);
+        f.getInputByName("_.tgm_bot_token").setValueAttribute(token);
+        f.getInputByName("_.tgm_group_id").setValueAttribute(groupId);
+        j.submit(f);
+
+        assertTrue(j.jenkins.isTelegramNotify());
+        assertEquals(botId, j.jenkins.getTelegramBotID());
+        assertEquals(token, j.jenkins.getTelegramBotToken());
+        assertEquals(groupId, j.jenkins.getTelegramGroupID());
+
+        String xml = new XmlFile(Jenkins.XSTREAM, new File(j.jenkins.getRootDir(), "config.xml")).asString();
+        assertTrue(xml, xml.contains("<telegramNotify>true</telegramNotify>"));
+        assertTrue(xml, xml.contains(String.format("<telegramBotID>%s</telegramBotID>", botId)));
+        assertTrue(xml, xml.contains(String.format("<telegramBotToken>%s</telegramBotToken>", token)));
+        assertTrue(xml, xml.contains(String.format("<telegramGroupID>%s</telegramGroupID>", groupId)));
     }
 
     /**
@@ -615,4 +642,6 @@ public class JenkinsTest {
         assertThat(protocolToDisable2 + " must be disaabled after the roundtrip", 
                 j.jenkins.getAgentProtocols(), not(hasItem(protocolToDisable2)));
     }
+
+
 }
