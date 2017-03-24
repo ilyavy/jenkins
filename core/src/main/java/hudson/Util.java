@@ -91,6 +91,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.kohsuke.args4j.spi.Messages;
 
 /**
  * Various utility methods that don't have more proper home.
