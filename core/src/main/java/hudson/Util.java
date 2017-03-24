@@ -23,6 +23,7 @@
  */
 package hudson;
 
+//import com.sun.org.apache.xml.internal.serializer.utils.Messages;
 import jenkins.util.SystemProperties;
 import com.sun.jna.Native;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -91,7 +92,7 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.kohsuke.args4j.spi.Messages;
+//import org.kohsuke.args4j.spi.Messages;
 
 /**
  * Various utility methods that don't have more proper home.
@@ -908,15 +909,15 @@ public class Util {
         long millisecs = duration;
 
         if (hours > 0)
-            return makeTimeSpanStringEnglish(sb, hours, "hours", minutes, "minutes");
+            return makeTimeSpanStringEnglish(sb, hours, "hour", minutes, "minute");
         else if (minutes > 0)
-            return makeTimeSpanStringEnglish(sb, minutes, "minutes", seconds, "seconds");
+            return makeTimeSpanStringEnglish(sb, minutes, "minute", seconds, "second");
         else if (seconds >= 1)
-            return sb.append(seconds+" seconds").toString();
-        else if (millisecs>=100)
-            return sb.append((float)(millisecs/10)/100+" seconds").toString(); // render "0.12 sec".
+            return sb.append(seconds + " seconds").toString();
+        else if (millisecs >= 100)
+            return sb.append((float) (millisecs / 10) / 100 + " seconds").toString(); // render "0.12 sec".
         else
-            return sb.append(millisecs+" millisecs").toString();
+            return sb.append(millisecs + " millisecs").toString();
     }
 
 
@@ -945,11 +946,17 @@ public class Util {
                                                     @Nonnull String bigLabel,
                                                     long smallUnit,
                                                     @Nonnull String smallLabel) {
-        if (bigUnit < 10)
-            if (smallUnit >0)
-                text.append(bigUnit+' '+bigLabel+' '+smallUnit+' '+smallLabel);
-            else
-                text.append(bigUnit+' '+bigLabel);
+        String bigL; // to add 's' in case its equal to 1
+        String smallL;
+
+        if (bigUnit > 1) bigL = bigLabel + 's';
+        else bigL = bigLabel;
+        if (smallUnit > 1) smallL = smallLabel + 's';
+        else smallL = smallLabel;
+
+        if (smallUnit > 0) text.append(String.valueOf(bigUnit) + ' ' + bigL + ' ' + String.valueOf(smallUnit) + ' ' + smallL);
+        else text.append(String.valueOf(bigUnit) + ' ' + bigL);
+
         return text.toString();
     }
 
