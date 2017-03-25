@@ -54,7 +54,7 @@ public class TelegramRunListener<R extends Run> extends RunListener<R> {
     @Override
     public void onCompleted(R r, TaskListener listener) {
         String message = "Build " + r.getFullDisplayName() + 
-                " has finished for " + r.getDurationString();
+                " has finished for " + r.getDurationStringEnglish();
 
         try {
             tapi.sendMessage(message);
