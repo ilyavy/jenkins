@@ -1,7 +1,6 @@
 package hudson.model;
 
 import org.kohsuke.stapler.StaplerRequest;
-import hudson.cli.CLICommand;
 
 import java.io.IOException;
 
@@ -34,10 +33,5 @@ public abstract class SimpleParameterDefinition extends ParameterDefinition {
         } else {
             return createValue(value[0]);
         }
-    }
-
-    @Override
-    public final ParameterValue createValue(CLICommand command, String value) throws IOException, InterruptedException {
-        return createValue(value);
     }
 }

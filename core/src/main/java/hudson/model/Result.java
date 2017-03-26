@@ -26,7 +26,6 @@ package hudson.model;
 import com.thoughtworks.xstream.converters.SingleValueConverter;
 import com.thoughtworks.xstream.converters.basic.AbstractSingleValueConverter;
 
-import hudson.cli.declarative.OptionHandlerExtension;
 import hudson.init.Initializer;
 import hudson.util.EditDistance;
 
@@ -185,7 +184,7 @@ public final class Result implements Serializable, CustomExportedBean {
         }
     };
 
-    @OptionHandlerExtension
+    /*
     public static final class OptionHandlerImpl extends OptionHandler<Result> {
         public OptionHandlerImpl(CmdLineParser parser, OptionDef option, Setter<? super Result> setter) {
             super(parser, option, setter);
@@ -206,7 +205,7 @@ public final class Result implements Serializable, CustomExportedBean {
         public String getDefaultMetaVariable() {
             return "STATUS";
         }
-    }
+    }*/
 
     @Initializer
     public static void init() {

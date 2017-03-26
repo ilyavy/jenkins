@@ -30,8 +30,6 @@ import hudson.Extension;
 import hudson.Launcher.ProcStarter;
 import jenkins.util.SystemProperties;
 import hudson.Util;
-import hudson.cli.declarative.CLIMethod;
-import hudson.cli.declarative.CLIResolver;
 import hudson.console.AnnotatedLargeText;
 import hudson.init.Initializer;
 import hudson.model.Descriptor.FormException;
@@ -1547,23 +1545,6 @@ public /*transient*/ abstract class Computer extends Actionable implements Acces
         return getRetentionStrategy().isAcceptingTasks(this) && (node == null || node.isAcceptingTasks());
     }
 
-    /**
-     * Used for CLI binding.
-     */
-    @CLIResolver
-    public static Computer resolveForCLI(
-            @Argument(required=true,metaVar="NAME",usage="Agent name, or empty string for master") String name) throws CmdLineException {
-        Jenkins h = Jenkins.getInstance();
-        Computer item = h.getComputer(name);
-        if (item==null) {
-            List<String> names = ComputerSet.getComputerNames();
-            String adv = EditDistance.findNearest(name, names);
-            throw new IllegalArgumentException(adv == null ?
-                    hudson.model.Messages.Computer_NoSuchSlaveExistsWithoutAdvice(name) :
-                    hudson.model.Messages.Computer_NoSuchSlaveExists(name, adv));
-        }
-        return item;
-    }
 
     /**
      * Relocate log files in the old location to the new location.

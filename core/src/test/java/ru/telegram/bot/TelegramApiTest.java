@@ -33,9 +33,13 @@ public class TelegramApiTest {
     }
 
     @Test
-    @Ignore
     public void sendMessageTest() throws Exception {
-        //TODO refactor TelegramApi to be able to mock HttpsURLConnection
+        TestRequestStrategy trs = new TestRequestStrategy();
+        telegramApi = new TelegramApi(trs);
+        telegramApi.sendMessage(message);
+        when(trs.getUrl()).thenReturn(
+                "https://api.telegram.org/bot309671090:AAF2bRdghkIE2qTgOaYon2FTQcHlAuwjRJ8/sendMessage");
+        
     }
 
 }

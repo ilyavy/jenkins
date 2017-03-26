@@ -5,8 +5,12 @@ import hudson.model.Result;
 import hudson.model.Run;
 import hudson.model.TaskListener;
 import jenkins.model.Jenkins;
+import ru.telegram.bot.PostConnectionBuilder;
+import ru.telegram.bot.PostRequestStrategy;
+import ru.telegram.bot.ConnectionBuilder;
 import ru.telegram.bot.TelegramApi;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.util.logging.Level;
@@ -20,7 +24,8 @@ import java.util.logging.Logger;
 @Extension
 public class TelegramRunListener<R extends Run> extends RunListener<R> {
 
-    private static final Logger LOGGER = Logger.getLogger(TelegramRunListener.class.getName());
+    private static final Logger LOGGER = 
+            Logger.getLogger(TelegramRunListener.class.getName());
 
     private TelegramApi tapi;
     private Jenkins j = Jenkins.getInstance();
@@ -35,10 +40,7 @@ public class TelegramRunListener<R extends Run> extends RunListener<R> {
      */
     public TelegramRunListener() {
         super();
-
-        tapi = new TelegramApi();
-        
-        LOGGER.info("INNO > TRL.construct()");
+        tapi = new TelegramApi(new PostRequestStrategy());
     }
 
     @Override
@@ -49,9 +51,12 @@ public class TelegramRunListener<R extends Run> extends RunListener<R> {
 
             try {
                 tapi.sendMessage(message);
-                LOGGER.log(Level.FINEST, "Telegram notification should have been sent");
+                LOGGER.log(Level.FINEST, 
+                        "Telegram notification should have been sent");
+                
             } catch (Exception e) {
-                LOGGER.log(Level.WARNING, "Error. Telegram notification wasn't sent", e);
+                LOGGER.log(Level.WARNING, 
+                        "Error. Telegram notification wasn't sent", e);
             }
         }
     }
@@ -67,14 +72,17 @@ public class TelegramRunListener<R extends Run> extends RunListener<R> {
             mesBuilder.append(". Finished: ");
             mesBuilder.append(r.getResult());
 
-            String log = null;
+            // In case of build's failure prepare the report to send
+            String failureReport = null;
             if (!r.getResult().equals(Result.SUCCESS)) {
                 try {
                     StringWriter wr = new StringWriter();
                     r.getLogText().writeLogTo(0, wr);
-                    log = wr.toString();
+                    failureReport = wr.toString();
+                    
                 } catch (IOException e) {
-                    LOGGER.log(Level.WARNING, "Error preparing telegram notification", e);
+                    LOGGER.log(Level.WARNING, 
+                            "Error preparing telegram notification", e);
                 }
             }
 
@@ -84,12 +92,13 @@ public class TelegramRunListener<R extends Run> extends RunListener<R> {
                 tapi.sendMessage(message);
                 listener.getLogger().println(
                         "Telegram notification should have been sent");
-                if (log != null) {
-                    tapi.sendMessage(log);
+                if (failureReport != null) {
+                    tapi.sendMessage(failureReport);
                 }
 
             } catch (Exception e) {
-                LOGGER.log(Level.WARNING, "Error. Telegram notification wasn't sent", e);
+                LOGGER.log(Level.WARNING, 
+                        "Error. Telegram notification wasn't sent", e);
             }
         }
     }

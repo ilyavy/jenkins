@@ -36,7 +36,6 @@ import hudson.init.Initializer;
 import static hudson.init.InitMilestone.JOB_LOADED;
 import static hudson.util.Iterators.reverse;
 
-import hudson.cli.declarative.CLIResolver;
 import hudson.model.labels.LabelAssignmentAction;
 import hudson.model.queue.AbstractQueueTask;
 import hudson.model.queue.Executables;
@@ -2909,11 +2908,10 @@ public class Queue extends ResourceController implements Saveable {
         }
     }
 
-    @CLIResolver
     public static Queue getInstance() {
         return Jenkins.getInstance().getQueue();
     }
-
+    
     /**
      * Restores the queue content during the start up.
      */

@@ -1,0 +1,1046 @@
+Telegram notification should have been sent
+Building in workspace C:/java/workspace/jenkins
+[jenkins] $ cmd.exe /C "C:\Java\maven\bin\mvn.cmd clean install -pl war -am -e && exit %%ERRORLEVEL%%"
+[INFO] Error stacktraces are turned on.
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Jenkins main module
+[INFO] Jenkins cli
+[INFO] Jenkins core
+[INFO] Jenkins war
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Jenkins main module 2.46-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ pom ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0.1:enforce (enforce-maven) @ pom ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0.1:display-info (display-info) @ pom ---
+[INFO] Maven Version: 3.3.9
+[INFO] JDK Version: 1.8.0_112 normalized as: 1.8.0-112
+[INFO] OS Info: Arch: amd64 Family: dos Name: windows 10 Version: 10.0
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0.1:enforce (default) @ pom ---
+[INFO] Adding ignore: org.eclipse.jetty.spdy.*
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0.1:enforce (enforce-banned-dependencies) @ pom ---
+[INFO] 
+[INFO] --- build-helper-maven-plugin:1.7:timestamp-property (timestamp-property) @ pom ---
+[INFO] Setting property 'now' to '03/24/2017 08:42 GMT'.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:1.7:regex-property (version-property) @ pom ---
+[INFO] Setting property 'build.version' to '2.46-SNAPSHOT (private-03/24/2017 08:42 GMT-Ilya)'.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:1.7:add-source (add-source) @ pom ---
+[INFO] Source directory: C:\java\workspace\jenkins\target\generated-sources\localizer added.
+[INFO] 
+[INFO] --- gmaven-plugin:1.5-jenkins-3:generateStubs (default) @ pom ---
+[INFO] No sources found for Java stub generation
+[INFO] 
+[INFO] --- maven-remote-resources-plugin:1.2.1:process (default) @ pom ---
+[INFO] 
+[INFO] --- gmaven-plugin:1.5-jenkins-3:compile (default) @ pom ---
+[INFO] No sources found to compile
+[INFO] 
+[INFO] --- animal-sniffer-maven-plugin:1.15:check (default) @ pom ---
+[INFO] Checking unresolved references to org.codehaus.mojo.signature:java17:1.0
+[INFO] 
+[INFO] --- gmaven-plugin:1.5-jenkins-3:generateTestStubs (default) @ pom ---
+[INFO] No sources found for Java stub generation
+[INFO] 
+[INFO] --- gmaven-plugin:1.5-jenkins-3:testCompile (default) @ pom ---
+[INFO] No sources found to compile
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ pom ---
+[INFO] Installing C:\java\workspace\jenkins\pom.xml to C:\Users\Ilya\.m2\repository\org\jenkins-ci\main\pom\2.46-SNAPSHOT\pom-2.46-SNAPSHOT.pom
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Jenkins cli 2.46-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ cli ---
+[INFO] Deleting C:\Java\workspace\jenkins\cli\target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0.1:enforce (enforce-maven) @ cli ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0.1:display-info (display-info) @ cli ---
+[INFO] Maven Version: 3.3.9
+[INFO] JDK Version: 1.8.0_112 normalized as: 1.8.0-112
+[INFO] OS Info: Arch: amd64 Family: dos Name: windows 10 Version: 10.0
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0.1:enforce (default) @ cli ---
+[INFO] Adding ignore: org.eclipse.jetty.spdy.*
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0.1:enforce (enforce-banned-dependencies) @ cli ---
+[INFO] 
+[INFO] --- build-helper-maven-plugin:1.7:timestamp-property (timestamp-property) @ cli ---
+[INFO] Setting property 'now' to '03/24/2017 08:43 GMT'.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:1.7:regex-property (version-property) @ cli ---
+[INFO] Setting property 'build.version' to '2.46-SNAPSHOT (private-03/24/2017 08:43 GMT-Ilya)'.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:1.7:add-source (add-source) @ cli ---
+[INFO] Source directory: C:\Java\workspace\jenkins\cli\target\generated-sources\localizer added.
+[INFO] 
+[INFO] --- gmaven-plugin:1.5-jenkins-3:generateStubs (default) @ cli ---
+[INFO] No sources found for Java stub generation
+[INFO] 
+[INFO] --- maven-localizer-plugin:1.24:generate (default) @ cli ---
+[INFO] 
+[INFO] --- maven-remote-resources-plugin:1.2.1:process (default) @ cli ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ cli ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 8 resources
+[INFO] Copying 1 resource
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:compile (default-compile) @ cli ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 10 source files to C:\Java\workspace\jenkins\cli\target\classes
+[INFO] 
+[INFO] --- gmaven-plugin:1.5-jenkins-3:compile (default) @ cli ---
+[INFO] No sources found to compile
+[INFO] 
+[INFO] --- animal-sniffer-maven-plugin:1.15:check (default) @ cli ---
+[INFO] Checking unresolved references to org.codehaus.mojo.signature:java17:1.0
+[INFO] 
+[INFO] --- gmaven-plugin:1.5-jenkins-3:generateTestStubs (default) @ cli ---
+[INFO] No sources found for Java stub generation
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ cli ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 4 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ cli ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 4 source files to C:\Java\workspace\jenkins\cli\target\test-classes
+[INFO] 
+[INFO] --- gmaven-plugin:1.5-jenkins-3:testCompile (default) @ cli ---
+[INFO] No sources found to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ cli ---
+[INFO] Surefire report directory: C:\Java\workspace\jenkins\cli\target\surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running hudson.cli.ConnectionMockTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.913 sec - in hudson.cli.ConnectionMockTest
+Running hudson.cli.ConnectionTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.775 sec - in hudson.cli.ConnectionTest
+Running hudson.cli.PrivateKeyProviderTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.925 sec - in hudson.cli.PrivateKeyProviderTest
+
+Results :
+
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ cli ---
+[INFO] Building jar: C:\Java\workspace\jenkins\cli\target\cli-2.46-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-assembly-plugin:2.4:attached (default) @ cli ---
+[INFO] Building jar: C:\Java\workspace\jenkins\cli\target\cli-2.46-SNAPSHOT-jar-with-dependencies.jar
+[INFO] 
+[INFO] >>> findbugs-maven-plugin:3.0.4:check (findbugs) > :findbugs @ cli >>>
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.4:findbugs (findbugs) @ cli ---
+[INFO] 
+[INFO] <<< findbugs-maven-plugin:3.0.4:check (findbugs) < :findbugs @ cli <<<
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.4:check (findbugs) @ cli ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ cli ---
+[INFO] Installing C:\Java\workspace\jenkins\cli\target\cli-2.46-SNAPSHOT.jar to C:\Users\Ilya\.m2\repository\org\jenkins-ci\main\cli\2.46-SNAPSHOT\cli-2.46-SNAPSHOT.jar
+[INFO] Installing C:\Java\workspace\jenkins\cli\pom.xml to C:\Users\Ilya\.m2\repository\org\jenkins-ci\main\cli\2.46-SNAPSHOT\cli-2.46-SNAPSHOT.pom
+[INFO] Installing C:\Java\workspace\jenkins\cli\target\cli-2.46-SNAPSHOT-jar-with-dependencies.jar to C:\Users\Ilya\.m2\repository\org\jenkins-ci\main\cli\2.46-SNAPSHOT\cli-2.46-SNAPSHOT-jar-with-dependencies.jar
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Jenkins core 2.46-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ jenkins-core ---
+[INFO] Deleting C:\Java\workspace\jenkins\core\target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0.1:enforce (enforce-maven) @ jenkins-core ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0.1:display-info (display-info) @ jenkins-core ---
+[INFO] Maven Version: 3.3.9
+[INFO] JDK Version: 1.8.0_112 normalized as: 1.8.0-112
+[INFO] OS Info: Arch: amd64 Family: dos Name: windows 10 Version: 10.0
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0.1:enforce (default) @ jenkins-core ---
+[INFO] Adding ignore: org.eclipse.jetty.spdy.*
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.0.1:enforce (enforce-banned-dependencies) @ jenkins-core ---
+[INFO] 
+[INFO] --- build-helper-maven-plugin:1.7:timestamp-property (timestamp-property) @ jenkins-core ---
+[INFO] Setting property 'now' to '03/24/2017 08:43 GMT'.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:1.7:regex-property (version-property) @ jenkins-core ---
+[INFO] Setting property 'build.version' to '2.46-SNAPSHOT (private-03/24/2017 08:43 GMT-Ilya)'.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:1.7:add-source (add-source) @ jenkins-core ---
+[INFO] Source directory: C:\Java\workspace\jenkins\core\target\generated-sources\antlr added.
+[INFO] Source directory: C:\Java\workspace\jenkins\core\target\generated-sources\localizer added.
+[INFO] Source directory: C:\Java\workspace\jenkins\core\target\generated-sources\taglib-interface added.
+[INFO] 
+[INFO] --- maven-localizer-plugin:1.24:generate (default) @ jenkins-core ---
+[INFO] 
+[INFO] --- antlr-maven-plugin:2.1:generate (cron) @ jenkins-core ---
+[INFO] Using Antlr grammar: C:\Java\workspace\jenkins\core\src\main\grammar\crontab.g
+ANTLR Parser Generator   Version 2.7.6 (2005-12-22)   1989-2005
+
+[INFO] 
+[INFO] --- antlr-maven-plugin:2.1:generate (labelExpr) @ jenkins-core ---
+[INFO] Using Antlr grammar: C:\Java\workspace\jenkins\core\src\main\grammar\labelExpr.g
+ANTLR Parser Generator   Version 2.7.6 (2005-12-22)   1989-2005
+C:\Java\workspace\jenkins\core\src\main\grammar\labelExpr.g: warning:lexical nondeterminism between rules IMPLIES and ATOM upon
+C:\Java\workspace\jenkins\core\src\main\grammar\labelExpr.g:     k==1:'-'
+
+[INFO] 
+[INFO] --- gmaven-plugin:1.5-jenkins-3:generateStubs (default) @ jenkins-core ---
+[INFO] Generated 3 Java stubs
+[INFO] 
+[INFO] --- maven-remote-resources-plugin:1.2.1:process (default) @ jenkins-core ---
+[INFO] 
+[INFO] --- maven-hpi-plugin:1.120:generate-taglib-interface (default) @ jenkins-core ---
+[INFO] lib\FormTagLib.java
+[INFO] lib\JenkinsTagLib.java
+[INFO] lib\LayoutTagLib.java
+[INFO] lib\TestTagLib.java
+[INFO] lib\JenkinsTagLib.gdsl
+[INFO] lib\TestTagLib.gdsl
+[INFO] lib\FormTagLib.gdsl
+[INFO] lib\LayoutTagLib.gdsl
+[INFO] jenkins\PluginManagerTagLib.java
+[INFO] jenkins\ToolsTagLib.java
+[INFO] jenkins\ToolsTagLib.gdsl
+[INFO] jenkins\PluginManagerTagLib.gdsl
+[INFO] lib\jenkins\NewFromListTagLib.java
+[INFO] lib\jenkins\ProjectTagLib.java
+[INFO] lib\jenkins\ProjectTagLib.gdsl
+[INFO] lib\jenkins\NewFromListTagLib.gdsl
+[INFO] jenkins\security\HudsonPrivateSecurityRealmTagLib.java
+[INFO] jenkins\security\HudsonPrivateSecurityRealmTagLib.gdsl
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:copy (winsw) @ jenkins-core ---
+[INFO] Configured Artifact: com.sun.winsw:winsw:bin:1.16:exe
+[INFO] Copying winsw-1.16-bin.exe to C:\Java\workspace\jenkins\core\target\classes\windows-service\jenkins.exe
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ jenkins-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 8505 resources
+[INFO] Copying 30 resources
+[INFO] Copying 2 resources
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:compile (default-compile) @ jenkins-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1048 source files to C:\Java\workspace\jenkins\core\target\classes
+[INFO] 
+[INFO] --- maven-encoding-plugin:1.1:check-encoding (default) @ jenkins-core ---
+[INFO] 
+[INFO] --- gmaven-plugin:1.5-jenkins-3:compile (default) @ jenkins-core ---
+[INFO] Compiled 15 Groovy classes
+[INFO] 
+[INFO] --- animal-sniffer-maven-plugin:1.15:check (default) @ jenkins-core ---
+[INFO] Checking unresolved references to org.codehaus.mojo.signature:java17:1.0
+[INFO] 
+[INFO] --- bridge-method-injector:1.13:process (default) @ jenkins-core ---
+[INFO] 
+[INFO] --- access-modifier-checker:1.4:enforce (default) @ jenkins-core ---
+[INFO] 
+[INFO] --- gmaven-plugin:1.5-jenkins-3:generateTestStubs (default) @ jenkins-core ---
+[INFO] Generated 13 Java stubs
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ jenkins-core ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 5 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ jenkins-core ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 118 source files to C:\Java\workspace\jenkins\core\target\test-classes
+[INFO] 
+[INFO] --- gmaven-plugin:1.5-jenkins-3:testCompile (default) @ jenkins-core ---
+[INFO] Compiled 29 Groovy classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ jenkins-core ---
+[INFO] Surefire report directory: C:\Java\workspace\jenkins\core\target\surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running hudson.BulkChangeTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.138 sec - in hudson.BulkChangeTest
+Running hudson.ClassicPluginStrategyTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.037 sec - in hudson.ClassicPluginStrategyTest
+Running hudson.cli.handlers.ViewOptionHandlerTest
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 8.862 sec - in hudson.cli.handlers.ViewOptionHandlerTest
+Running hudson.cli.ListJobsCommandTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.275 sec - in hudson.cli.ListJobsCommandTest
+Running hudson.console.UrlAnnotatorTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.04 sec - in hudson.console.UrlAnnotatorTest
+Running hudson.EnvVarsTest
+мар 24, 2017 11:47:10 AM hudson.EnvVars$OverrideOrderCalculator cutCycleAt
+WARNING: Cyclic reference detected: A -> B -> C -> A
+мар 24, 2017 11:47:10 AM hudson.EnvVars$OverrideOrderCalculator cutCycleAt
+WARNING: Cut the reference B -> C
+мар 24, 2017 11:47:10 AM hudson.EnvVars$OverrideOrderCalculator cutCycleAt
+WARNING: Cyclic reference detected: D -> E -> D
+мар 24, 2017 11:47:10 AM hudson.EnvVars$OverrideOrderCalculator cutCycleAt
+WARNING: Cut the reference E -> D
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.082 sec - in hudson.EnvVarsTest
+Running hudson.FilePathTest
+Tests run: 26, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 316.238 sec - in hudson.FilePathTest
+Running hudson.FunctionsTest
+java.lang.NullPointerException: oops
+    at p.C.method1(C.java:17)
+    at m.Main.main(Main.java:1)
+
+java.lang.NullPointerException: oops
+    at p.C.method2(C.java:23)
+    at p.C.method1(C.java:17)
+Caused: java.lang.IllegalStateException
+    at p.C.method1(C.java:19)
+    at m.Main.main(Main.java:1)
+
+java.lang.NullPointerException: oops
+    at p.C.method2(C.java:23)
+    at p.C.method1(C.java:17)
+Caused: java.lang.IllegalStateException: more info
+    at p.C.method1(C.java:19)
+    at m.Main.main(Main.java:1)
+
+java.lang.NullPointerException: oops
+    at p.C.method2(C.java:23)
+    at p.C.method1(C.java:17)
+Caused: java.lang.IllegalStateException: more info
+    at p.C.method1(C.java:19)
+    at m.Main.main(Main.java:1)
+
+remote.Exception: oops
+    at remote.Place.method(Place.java:17)
+    at remote.Service.run(Service.java:9)
+    at ......remote call(Native Method)
+    at local.Side.call(Side.java:11)
+    at local.Main.main(Main.java:1)
+
+remote.Exception: oops
+    at remote.Place.method1(Place.java:11)
+    at remote.Place.method2(Place.java:17)
+    at remote.Service.run(Service.java:9)
+Caused: remote.Wrapper
+    at remote.Place.method2(Place.java:19)
+    at remote.Service.run(Service.java:9)
+    at ......remote call(Native Method)
+    at local.Side.call(Side.java:11)
+    at local.Main.main(Main.java:1)
+
+java.lang.NullPointerException: oops
+    at p.C.method2(C.java:23)
+    at p.C.method1(C.java:17)
+Also:   java.io.IOException: could not close
+        at p.C.close(C.java:99)
+        at p.C.method1(C.java:18)
+Also:   java.lang.NullPointerException
+        at p.C.findFlushee(C.java:70)
+        at p.C.flush(C.java:75)
+    Caused: java.io.IOException
+        at p.C.flush(C.java:77)
+        at p.C.method1(C.java:18)
+Caused: java.lang.IllegalStateException
+    at p.C.method1(C.java:19)
+    at m.Main.main(Main.java:1)
+
+Some custom exception
+
+<cycle to p.Exc1>
+Caused: p.Exc2
+    at p.C.method2(C.java:27)
+Caused: p.Exc1
+    at p.C.method1(C.java:17)
+
+мар 24, 2017 11:52:48 AM hudson.Functions getActionUrl
+WARNING: Failed to parse URL for action: java.net.URISyntaxException: Illegal character in query at index 35: http://nowhere.net/stuff?something=^woohoo
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 24.486 sec - in hudson.FunctionsTest
+Running hudson.LauncherTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.272 sec - in hudson.LauncherTest
+Running hudson.logging.LogRecorderTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 sec - in hudson.logging.LogRecorderTest
+Running hudson.MarkupTextTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 sec - in hudson.MarkupTextTest
+Running hudson.model.AbstractItemTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 sec - in hudson.model.AbstractItemTest
+Running hudson.model.ActionableTest
+Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.023 sec - in hudson.model.ActionableTest
+Running hudson.model.AutoCompleteSeederTest
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.021 sec - in hudson.model.AutoCompleteSeederTest
+Running hudson.model.BallColorTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.017 sec - in hudson.model.BallColorTest
+Running hudson.model.BuildStatusSummaryTest
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.38 sec - in hudson.model.BuildStatusSummaryTest
+Running hudson.model.ChoiceParameterDefinitionTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 sec - in hudson.model.ChoiceParameterDefinitionTest
+Running hudson.model.ComputerTest
+мар 24, 2017 11:52:52 AM hudson.model.Computer relocateOldLogs
+INFO: Relocated log file C:\Java\workspace\jenkins\core\target\jenkins1438207232549531585test\slave-abc.log to C:\Java\workspace\jenkins\core\target\jenkins1438207232549531585test\logs\slaves\abc\slave.log
+мар 24, 2017 11:52:52 AM hudson.model.Computer relocateOldLogs
+INFO: Relocated log file C:\Java\workspace\jenkins\core\target\jenkins1438207232549531585test\slave-def.log.5 to C:\Java\workspace\jenkins\core\target\jenkins1438207232549531585test\logs\slaves\def\slave.log.5
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.019 sec - in hudson.model.ComputerTest
+Running hudson.model.DisplayNameListenerTest
+мар 24, 2017 11:52:52 AM hudson.model.DisplayNameListener onRenamed
+INFO: onRenamed():Setting displayname to null for item.name=new job name
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.024 sec - in hudson.model.DisplayNameListenerTest
+Running hudson.model.FileParameterValueTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in hudson.model.FileParameterValueTest
+Running hudson.model.FingerprintTest
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.223 sec - in hudson.model.FingerprintTest
+Running hudson.model.ItemsTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.02 sec - in hudson.model.ItemsTest
+Running hudson.model.JobTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in hudson.model.JobTest
+Running hudson.model.listeners.SCMListenerTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.267 sec - in hudson.model.listeners.SCMListenerTest
+Running hudson.model.ListViewTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.499 sec - in hudson.model.ListViewTest
+Running hudson.model.LoadStatisticsTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.587 sec - in hudson.model.LoadStatisticsTest
+Running hudson.model.ParametersActionTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.909 sec - in hudson.model.ParametersActionTest
+Running hudson.model.ResourceListTest
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=1 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=1 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=2 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=1 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=3 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=1 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=4 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=1 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=5 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=1 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=6 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=1 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=7 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=1 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=7 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=1 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=8 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=1 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=9 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=1 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=10 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=1 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=11 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with E1927512926176735975(1)=1 and E1927512926176735975(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with F5274012497411174555(5)=5 and F5274012497411174555(5)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with F5274012497411174555(5)=1 and F5274012497411174555(5)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with F5274012497411174555(5)=6 and F5274012497411174555(5)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with F5274012497411174555(5)=1 and F5274012497411174555(5)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with F5274012497411174555(5)=7 and F5274012497411174555(5)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with F5274012497411174555(5)=1 and F5274012497411174555(5)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with F5274012497411174555(5)=8 and F5274012497411174555(5)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with F5274012497411174555(5)=1 and F5274012497411174555(5)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with F5274012497411174555(5)=9 and F5274012497411174555(5)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with F5274012497411174555(5)=1 and F5274012497411174555(5)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with A-4962768465676381896(1)=1 and A-4962768465676381896(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with A-4962768465676381896(1)=1 and A-4962768465676381896(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with A-4962768465676381896(1)/A-6688467811848818630(1)=1 and A-4962768465676381896(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with A-4962768465676381896(1)=1 and A-4962768465676381896(1)/A-6688467811848818630(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with A-4962768465676381896(1)=1 and A-4962768465676381896(1)/A-8292973307042192125(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with A-4962768465676381896(1)/A-8292973307042192125(1)=1 and A-4962768465676381896(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with C5072005423257391728(3)/C2377732757510138102(3)=3 and C5072005423257391728(3)/C2377732757510138102(3)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with C5072005423257391728(3)/C2377732757510138102(3)=1 and C5072005423257391728(3)/C2377732757510138102(3)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with A-4962768465676381896(1)=1 and A-4962768465676381896(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with A-4962768465676381896(1)=1 and A-4962768465676381896(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with A-4962768465676381896(1)=1 and A-4962768465676381896(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with A-4962768465676381896(1)=1 and A-4962768465676381896(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with A-4962768465676381896(1)=1 and A-4962768465676381896(1)/A4437113781045784766(1)
+мар 24, 2017 11:52:56 AM hudson.model.ResourceList _getConflict
+INFO: Collision with A-4962768465676381896(1)=1 and A-4962768465676381896(1)
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.099 sec - in hudson.model.ResourceListTest
+Running hudson.model.RunParameterValueTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in hudson.model.RunParameterValueTest
+Running hudson.model.RunTest
+мар 24, 2017 11:52:56 AM hudson.model.Run onEndBuilding
+WARNING: {0}: No build result is set, so marking as failure. This should not happen.
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.08 sec - in hudson.model.RunTest
+Running hudson.model.TaskActionTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 sec - in hudson.model.TaskActionTest
+Running hudson.model.TimeSeriesTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in hudson.model.TimeSeriesTest
+Running hudson.model.UpdateCenterTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in hudson.model.UpdateCenterTest
+Running hudson.model.UserTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 sec - in hudson.model.UserTest
+Running hudson.model.ViewTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.077 sec - in hudson.model.ViewTest
+Running hudson.PluginManagerTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.235 sec - in hudson.PluginManagerTest
+Running hudson.PluginWrapperTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.057 sec - in hudson.PluginWrapperTest
+Running hudson.ProxyConfigurationTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.177 sec - in hudson.ProxyConfigurationTest
+Running hudson.RemoveWindowsDirectoryJunctionTest
+б®Ґ¤Ё­Ґ­ЁҐ б®§¤ ­® ¤«п C:\Java\workspace\jenkins\core\target\junit3236005799512036413\test Junction <<===>> C:\Java\workspace\jenkins\core\target\junit3236005799512036413\notJunction
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.045 sec - in hudson.RemoveWindowsDirectoryJunctionTest
+Running hudson.scheduler.CronTabDayOfWeekLocaleTest
+Tests run: 2983, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.575 sec - in hudson.scheduler.CronTabDayOfWeekLocaleTest
+Running hudson.scheduler.CronTabEventualityTest
+Tests run: 27, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in hudson.scheduler.CronTabEventualityTest
+Running hudson.scheduler.CronTabTest
+Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 sec - in hudson.scheduler.CronTabTest
+Running hudson.search.SearchTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec - in hudson.search.SearchTest
+Running hudson.slaves.ChannelPingerTest
+мар 24, 2017 11:53:01 AM hudson.slaves.ChannelPinger <init>
+WARNING: hudson.slaves.ChannelPinger.pingInterval property is deprecated, hudson.slaves.ChannelPinger.pingIntervalSeconds should be used
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.232 sec - in hudson.slaves.ChannelPingerTest
+Running hudson.slaves.CloudTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 sec - in hudson.slaves.CloudTest
+Running hudson.slaves.ComputerLauncherTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.02 sec - in hudson.slaves.ComputerLauncherTest
+Running hudson.slaves.DelegatingComputerLauncherTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.417 sec - in hudson.slaves.DelegatingComputerLauncherTest
+Running hudson.slaves.NodeListTest
+<?xml version='1.0' encoding='UTF-8'?>
+<hudson.slaves.NodeList>
+  <hudson.slaves.NodeListTest_-DummyNode>
+    <nodeName>7322732628763801682</nodeName>
+  </hudson.slaves.NodeListTest_-DummyNode>
+</hudson.slaves.NodeList>
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 sec - in hudson.slaves.NodeListTest
+Running hudson.tasks._maven.Maven3MojoNoteTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec - in hudson.tasks._maven.Maven3MojoNoteTest
+Running hudson.triggers.SCMTriggerTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in hudson.triggers.SCMTriggerTest
+Running hudson.triggers.TimerTriggerTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in hudson.triggers.TimerTriggerTest
+Running hudson.util.ArgumentListBuilderTest
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.015 sec - in hudson.util.ArgumentListBuilderTest
+Running hudson.util.ConsistentHashTest
+data2
+2294
+82/918
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.411 sec - in hudson.util.ConsistentHashTest
+Running hudson.util.CopyOnWriteListTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 sec - in hudson.util.CopyOnWriteListTest
+Running hudson.util.CopyOnWriteMapTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.048 sec - in hudson.util.CopyOnWriteMapTest
+Running hudson.util.CyclicGraphDetectorTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 sec - in hudson.util.CyclicGraphDetectorTest
+Running hudson.util.DirScannerTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.029 sec - in hudson.util.DirScannerTest
+Running hudson.util.FormValidationTest
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.005 sec - in hudson.util.FormValidationTest
+Running hudson.util.io.ReopenableRotatingFileOutputStreamTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.038 sec - in hudson.util.io.ReopenableRotatingFileOutputStreamTest
+Running hudson.util.io.TarArchiverTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 2, Time elapsed: 0.017 sec - in hudson.util.io.TarArchiverTest
+Running hudson.util.io.ZipArchiverTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 sec - in hudson.util.io.ZipArchiverTest
+Running hudson.util.IsOverriddenTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec - in hudson.util.IsOverriddenTest
+Running hudson.util.IteratorsTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 sec - in hudson.util.IteratorsTest
+Running hudson.util.JSONObjectResponseTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.062 sec - in hudson.util.JSONObjectResponseTest
+Running hudson.util.LineEndNormalizingWriterTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in hudson.util.LineEndNormalizingWriterTest
+Running hudson.util.MultipartFormDataParserTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in hudson.util.MultipartFormDataParserTest
+Running hudson.util.PackedMapTest
+a=b
+c=d
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.007 sec - in hudson.util.PackedMapTest
+Running hudson.util.ProcessTreeTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.338 sec - in hudson.util.ProcessTreeTest
+Running hudson.util.QuotedStringTokenizerTest
+[foo, bar]
+[foo, bar zot]
+[foo, bar=quote zot]
+[foo"]
+[foo bar]
+[foo\, bar]
+[foo=bar\zot]
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.002 sec - in hudson.util.QuotedStringTokenizerTest
+Running hudson.util.RobustReflectionConverterTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.056 sec - in hudson.util.RobustReflectionConverterTest
+Running hudson.util.RunListTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.698 sec - in hudson.util.RunListTest
+Running hudson.util.SecretTest
+{AQAAABAAAAAQmvrD1YZHg8OyktKnlzQyiMI4oJI9t3RbRWiswpMUqvY=}
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.113 sec - in hudson.util.SecretTest
+Running hudson.util.SubClassGeneratorTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 sec - in hudson.util.SubClassGeneratorTest
+Running hudson.util.XStream2EncodingTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 sec - in hudson.util.XStream2EncodingTest
+Running hudson.util.XStream2Test
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.148 sec - in hudson.util.XStream2Test
+Running jenkins.model.CoreEnvironmentContributorTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.06 sec - in jenkins.model.CoreEnvironmentContributorTest
+Running jenkins.model.JDKNameTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.235 sec - in jenkins.model.JDKNameTest
+Running jenkins.model.JenkinsDescriptorTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.903 sec - in jenkins.model.JenkinsDescriptorTest
+Running jenkins.model.JenkinsGetRootUrlTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.822 sec - in jenkins.model.JenkinsGetRootUrlTest
+Running jenkins.model.JenkinsLocationConfigurationTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.035 sec - in jenkins.model.JenkinsLocationConfigurationTest
+Running jenkins.model.lazy.AbstractLazyLoadRunMapTest
+Tests run: 22, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.874 sec - in jenkins.model.lazy.AbstractLazyLoadRunMapTest
+Running jenkins.model.lazy.SortedIntListTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec - in jenkins.model.lazy.SortedIntListTest
+Running jenkins.model.lazy.SortedListTest
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 sec - in jenkins.model.lazy.SortedListTest
+Running jenkins.model.PeepholePermalinkTest
+мар 24, 2017 11:53:26 AM hudson.Util warnWindowsSymlink
+WARNING: Symbolic links enabled on this platform but disabled for this user; run as administrator or use Local Security Policy > Security Settings > Local Policies > User Rights Assignment > Create symbolic links
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.028 sec - in jenkins.model.PeepholePermalinkTest
+Running jenkins.RemotingJarSignatureTest
+Verifying C:\Users\Ilya\.m2\repository\org\jenkins-ci\main\remoting\3.4.1\remoting-3.4.1.jar
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.11 sec - in jenkins.RemotingJarSignatureTest
+Running jenkins.ResilientJsonObjectTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 sec - in jenkins.ResilientJsonObjectTest
+Running jenkins.security.CryptoConfidentialKeyTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.071 sec - in jenkins.security.CryptoConfidentialKeyTest
+Running jenkins.security.DefaultConfidentialStoreTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.123 sec - in jenkins.security.DefaultConfidentialStoreTest
+Running jenkins.security.HexStringConfidentialKeyTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.105 sec - in jenkins.security.HexStringConfidentialKeyTest
+Running jenkins.security.HMACConfidentialKeyTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.069 sec - in jenkins.security.HMACConfidentialKeyTest
+Running jenkins.security.RSAConfidentialKeyTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.667 sec - in jenkins.security.RSAConfidentialKeyTest
+Running jenkins.security.RSADigitalSignatureConfidentialKeyTest
+hiIf2FQBYFIdcmX+L+VgTt7gMWk+FuDvGrHxjx9EhxBBwyhUKsNvOQK83lKhu0jYdfOL5nSIjLhU5F5Ralb6g91AW7dXn1hlHIjprTAxq6HZ1v7emtu1Ji4yplmxGgt54pRb9VdlnyFSct7eQOZIvptWv5PiMya7rsRAsv+tm+eyekCSRLMjA9+hrgAhwAGyb5PBj7+a1Tytza/xwe2bpSiC2GrMvZLxg8eNBPh65ezVr/Cn9cyP9mJVl4maXqX/lrUGcMJrjo+3j87BfWThiGKIoSJsLn9VAvHHmXyD6fILdeGzWUEBuQKcrFcvrCTDGepjXRhmCXGk714YqbBizA==
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.292 sec - in jenkins.security.RSADigitalSignatureConfidentialKeyTest
+Running jenkins.triggers.SCMTriggerItemTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.85 sec - in jenkins.triggers.SCMTriggerItemTest
+Running jenkins.util.AtmostOneTaskExecutorTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.665 sec - in jenkins.util.AtmostOneTaskExecutorTest
+Running jenkins.util.JenkinsJVMTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 sec - in jenkins.util.JenkinsJVMTest
+Running jenkins.util.MarkFindingOutputStreamTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 sec - in jenkins.util.MarkFindingOutputStreamTest
+Running jenkins.util.TimerTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.01 sec - in jenkins.util.TimerTest
+Running jenkins.util.TreeStringBuilderTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.053 sec - in jenkins.util.TreeStringBuilderTest
+Running jenkins.util.xstream.XStreamDOMTest
+<jenkins.util.xstream.XStreamDOM>
+  <jenkins.util.xstream.XStreamDOMTest_-Name__That__Gets__Escaped/>
+</jenkins.util.xstream.XStreamDOM>
+<foo>
+  <bar>
+    <test1 key="value">text!</test1>
+  </bar>
+  <zot>
+    <test2 key="value">
+      <test1 key="value">text!</test1>
+    </test2>
+  </zot>
+</foo>
+<foo>
+  <bar>
+    <test1 key="value">text!</test1>
+  </bar>
+  <zot>
+    <test2 key="value">
+      <test1 key="value">text!</test1>
+    </test2>
+  </zot>
+</foo>
+<jenkins.util.xstream.XStreamDOM>
+  <string-array/>
+</jenkins.util.xstream.XStreamDOM>
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.109 sec - in jenkins.util.xstream.XStreamDOMTest
+Running jenkins.widgets.HistoryPageFilterTest
+Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.075 sec - in jenkins.widgets.HistoryPageFilterTest
+Running jenkins.xml.XMLUtilsTest
+[Fatal Error] :2:10: DOCTYPE is disallowed when the feature "http://apache.org/xml/features/disallow-doctype-decl" set to true.
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.265 sec - in jenkins.xml.XMLUtilsTest
+Running ru.telegram.bot.TelegramApiTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.006 sec - in ru.telegram.bot.TelegramApiTest
+Java HotSpot(TM) 64-Bit Server VM warning: ignoring option MaxPermSize=128m; support was removed in 8.0
+
+Results :
+
+Tests run: 3464, Failures: 0, Errors: 0, Skipped: 8
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ jenkins-core ---
+[INFO] Building jar: C:\Java\workspace\jenkins\core\target\jenkins-core-2.46-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-hpi-plugin:1.120:record-core-location (default) @ jenkins-core ---
+[INFO] 
+[INFO] >>> findbugs-maven-plugin:3.0.4:check (findbugs) > :findbugs @ jenkins-core >>>
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.4:findbugs (findbugs) @ jenkins-core ---
+[INFO] 
+[INFO] <<< findbugs-maven-plugin:3.0.4:check (findbugs) < :findbugs @ jenkins-core <<<
+[INFO] 
+[INFO] --- findbugs-maven-plugin:3.0.4:check (findbugs) @ jenkins-core ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ jenkins-core ---
+[INFO] Installing C:\Java\workspace\jenkins\core\target\jenkins-core-2.46-SNAPSHOT.jar to C:\Users\Ilya\.m2\repository\org\jenkins-ci\main\jenkins-core\2.46-SNAPSHOT\jenkins-core-2.46-SNAPSHOT.jar
+[INFO] Installing C:\Java\workspace\jenkins\core\pom.xml to C:\Users\Ilya\.m2\repository\org\jenkins-ci\main\jenkins-core\2.46-SNAPSHOT\jenkins-core-2.46-SNAPSHOT.pom
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Jenkins war 2.46-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.4.1:clean (default-clean) @ jenkins-war ---
+[INFO] Deleting C:\Java\workspace\jenkins\war\target
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.3.1:enforce (enforce-maven) @ jenkins-war ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.3.1:display-info (display-info) @ jenkins-war ---
+[INFO] Maven Version: 3.3.9
+[INFO] JDK Version: 1.8.0_112 normalized as: 1.8.0-112
+[INFO] OS Info: Arch: amd64 Family: dos Name: windows 10 Version: 10.0
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.3.1:enforce (default) @ jenkins-war ---
+[INFO] Adding ignore: org.eclipse.jetty.spdy.*
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.3.1:enforce (enforce-banned-dependencies) @ jenkins-war ---
+[INFO] 
+[INFO] --- maven-enforcer-plugin:1.3.1:enforce (enforce-versions) @ jenkins-war ---
+[INFO] 
+[INFO] --- build-helper-maven-plugin:1.7:timestamp-property (timestamp-property) @ jenkins-war ---
+[INFO] Setting property 'now' to '03/24/2017 08:54 GMT'.
+[INFO] 
+[INFO] --- build-helper-maven-plugin:1.7:regex-property (version-property) @ jenkins-war ---
+[INFO] Setting property 'build.version' to '2.46-SNAPSHOT (private-03/24/2017 08:54 GMT-Ilya)'.
+[INFO] 
+[INFO] --- download-maven-plugin:1.2.1:wget (get-node) @ jenkins-war ---
+[INFO] Got from cache: C:\Users\Ilya\.m2\repository\.cache\maven-download-plugin\node.exe
+[INFO] 
+[INFO] --- download-maven-plugin:1.2.1:wget (get-npm) @ jenkins-war ---
+[INFO] Got from cache: C:\Users\Ilya\.m2\repository\.cache\maven-download-plugin\npm-3.8.9.tgz
+[INFO] 
+[INFO] --- frontend-maven-plugin:1.0:install-node-and-npm (install node and npm) @ jenkins-war ---
+[INFO] Node v4.0.0 is already installed.
+[INFO] NPM 3.8.9 is already installed.
+[INFO] 
+[INFO] --- frontend-maven-plugin:1.0:npm (npm install) @ jenkins-war ---
+[INFO] Running 'npm install' in C:\Java\workspace\jenkins\war
+[INFO] 
+[INFO] --- build-helper-maven-plugin:1.7:add-source (add-source) @ jenkins-war ---
+[INFO] Source directory: C:\Java\workspace\jenkins\war\target\generated-sources\localizer added.
+[INFO] 
+[INFO] --- gmaven-plugin:1.5-jenkins-3:generateStubs (default) @ jenkins-war ---
+[INFO] No sources found for Java stub generation
+[INFO] 
+[INFO] --- frontend-maven-plugin:1.0:gulp (gulp bundle) @ jenkins-war ---
+[INFO] Running 'gulp.js jshint bundle' in C:\Java\workspace\jenkins\war
+[INFO] [11:54:38] Maven project
+[INFO] [11:54:38] Setting defaults
+[INFO] [11:54:38] Bundle will be generated in directory 'src/main/webapp/jsbundles' as 'page-init.js'.
+[INFO] [11:54:38] Bundle will be generated in directory 'src/main/webapp/jsbundles' as 'pluginSetupWizard.js'.
+[INFO] [11:54:38] Bundle will be generated in directory 'src/main/webapp/jsbundles' as 'upgradeWizard.js'.
+[INFO] [11:54:38] Bundle will be generated in directory 'src/main/webapp/jsbundles' as 'config-tabbar.js'.
+[INFO] [11:54:38] Bundle will be generated in directory 'src/main/webapp/jsbundles' as 'config-scrollspy.js'.
+[INFO] [11:54:38] Bundle will be generated in directory 'src/main/webapp/jsbundles' as 'add-item.js'.
+[INFO] [11:54:38] Using gulpfile C:\Java\workspace\jenkins\war\gulpfile.js
+[INFO] [11:54:38] Starting 'jshint'...
+[INFO] [11:54:38]   - Using default JSHint configuration (in jenkins-js-builder). Override by defining a .jshintrc in this folder.
+[INFO] [11:54:38] Finished 'jshint' after 391 ms
+[INFO] [11:54:38] Starting 'log-env'...
+[INFO] [11:54:38] Source Dirs:
+[INFO] [11:54:38]  - src: src/main/js,src/main/less
+[INFO] [11:54:38]  - test: src/test/js
+[INFO] [11:54:38] Finished 'log-env' after 718 Ојs
+[INFO] [11:54:38] Starting 'bundle_page-init'...
+[INFO] [11:54:39] Starting 'bundle_pluginSetupWizard'...
+[INFO] [11:54:39] LESS CSS pre-processing completed to 'src/main/webapp/jsbundles'.
+[INFO] [11:54:39] Starting 'bundle_upgradeWizard'...
+[INFO] [11:54:39] Starting 'bundle_config-tabbar'...
+[INFO] [11:54:39] LESS CSS pre-processing completed to 'src/main/webapp/jsbundles'.
+[INFO] [11:54:39] Starting 'bundle_config-scrollspy'...
+[INFO] [11:54:39] LESS CSS pre-processing completed to 'src/main/webapp/jsbundles'.
+[INFO] [11:54:39] Starting 'bundle_add-item'...
+[INFO] [11:54:39] LESS CSS pre-processing completed to 'src/main/webapp/jsbundles'.
+[INFO] [11:54:44] Finished 'bundle_page-init' after 5.39 s
+[INFO] [11:54:44] Finished 'bundle_add-item' after 5.02 s
+[INFO] [11:54:44] Finished 'bundle_config-tabbar' after 5.12 s
+[INFO] [11:54:44] Finished 'bundle_config-scrollspy' after 5.12 s
+[INFO] [11:54:44] Finished 'bundle_upgradeWizard' after 5.29 s
+[INFO] [11:54:44] Finished 'bundle_pluginSetupWizard' after 5.56 s
+[INFO] [11:54:44] Starting 'bundle'...
+[INFO] [11:54:44] Finished 'bundle' after 24 Ојs
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:list (list-dependencies) @ jenkins-war ---
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:unpack-dependencies (executable-war-header) @ jenkins-war ---
+[INFO] Unpacking C:\Users\Ilya\.m2\repository\org\jenkins-ci\executable-war\1.34\executable-war-1.34.jar to C:\Java\workspace\jenkins\war\target\jenkins with includes "**/*.class" and excludes ""
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:copy (resgen) @ jenkins-war ---
+[INFO] Configured Artifact: org.jenkins-ci.main:cli:jar-with-dependencies:?:jar
+[INFO] Configured Artifact: org.jenkins-ci:winstone:?:jar
+[INFO] Copying cli-2.46-SNAPSHOT-jar-with-dependencies.jar to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\jenkins-cli.jar
+[INFO] Copying winstone-3.3.jar to C:\Java\workspace\jenkins\war\target\jenkins\winstone.jar
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:copy (detached-plugins) @ jenkins-war ---
+[INFO] Configured Artifact: org.jenkins-ci.main:maven-plugin:2.14:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:ssh-slaves:1.9:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:credentials:1.18:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:ssh-credentials:1.10:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:subversion:1.54:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:cvs:2.11:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:ant:1.2:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:javadoc:1.1:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:translation:1.10:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:external-monitor-job:1.4:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:ldap:1.11:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:pam-auth:1.1:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:mailer:1.11:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:matrix-auth:1.1:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:windows-slaves:1.0:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:antisamy-markup-formatter:1.1:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:matrix-project:1.4.1:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:script-security:1.13:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:junit:1.6:hpi
+[INFO] Configured Artifact: org.jenkins-ci.plugins:bouncycastle-api:2.16.0:hpi
+[INFO] Copying maven-plugin-2.14.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\maven-plugin.hpi
+[INFO] Copying ssh-slaves-1.9.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\ssh-slaves.hpi
+[INFO] Copying credentials-1.18.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\credentials.hpi
+[INFO] Copying ssh-credentials-1.10.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\ssh-credentials.hpi
+[INFO] Copying subversion-1.54.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\subversion.hpi
+[INFO] Copying cvs-2.11.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\cvs.hpi
+[INFO] Copying ant-1.2.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\ant.hpi
+[INFO] Copying javadoc-1.1.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\javadoc.hpi
+[INFO] Copying translation-1.10.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\translation.hpi
+[INFO] Copying external-monitor-job-1.4.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\external-monitor-job.hpi
+[INFO] Copying ldap-1.11.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\ldap.hpi
+[INFO] Copying pam-auth-1.1.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\pam-auth.hpi
+[INFO] Copying mailer-1.11.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\mailer.hpi
+[INFO] Copying matrix-auth-1.1.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\matrix-auth.hpi
+[INFO] Copying windows-slaves-1.0.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\windows-slaves.hpi
+[INFO] Copying antisamy-markup-formatter-1.1.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\antisamy-markup-formatter.hpi
+[INFO] Copying matrix-project-1.4.1.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\matrix-project.hpi
+[INFO] Copying script-security-1.13.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\script-security.hpi
+[INFO] Copying junit-1.6.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\junit.hpi
+[INFO] Copying bouncycastle-api-2.16.0.hpi to C:\Java\workspace\jenkins\war\target\jenkins\WEB-INF\detached-plugins\bouncycastle-api.hpi
+[INFO] 
+[INFO] --- maven-remote-resources-plugin:1.2.1:process (default) @ jenkins-war ---
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ jenkins-war ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Java\workspace\jenkins\war\src\main\resources
+[INFO] skip non existing resourceDirectory C:\Java\workspace\jenkins\war\src\filter\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:compile (default-compile) @ jenkins-war ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-license-plugin:1.7:process (default) @ jenkins-war ---
+[INFO] Generated C:\Java\workspace\jenkins\war\target\classes\META-INF\licenses.xml
+[INFO] About to transform xml C:\Java\workspace\jenkins\war\target\classes\META-INF\licenses.xml into html C:\Java\workspace\jenkins\war\target\classes\META-INF\licenses.html with licenses.xslt com.sun.org.apache.xalan.internal.xsltc.trax.TemplatesImpl@723f8e69
+[INFO] Generated C:\Java\workspace\jenkins\war\target\classes\META-INF\licenses.html
+[INFO] 
+[INFO] --- gmaven-plugin:1.5-jenkins-3:compile (default) @ jenkins-war ---
+[INFO] No sources found to compile
+[INFO] 
+[INFO] --- animal-sniffer-maven-plugin:1.15:check (default) @ jenkins-war ---
+[INFO] Checking unresolved references to org.codehaus.mojo.signature:java17:1.0
+[INFO] 
+[INFO] --- gmaven-plugin:1.5-jenkins-3:generateTestStubs (default) @ jenkins-war ---
+[INFO] No sources found for Java stub generation
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ jenkins-war ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Java\workspace\jenkins\war\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ jenkins-war ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- gmaven-plugin:1.5-jenkins-3:testCompile (default) @ jenkins-war ---
+[INFO] No sources found to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.19.1:test (default-test) @ jenkins-war ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- frontend-maven-plugin:1.0:gulp (gulp test) @ jenkins-war ---
+[INFO] Running 'gulp.js bundle test' in C:\Java\workspace\jenkins\war
+[INFO] [11:55:00] Maven project
+[INFO] [11:55:00] Setting defaults
+[INFO] [11:55:00] Bundle will be generated in directory 'src/main/webapp/jsbundles' as 'page-init.js'.
+[INFO] [11:55:00] Bundle will be generated in directory 'src/main/webapp/jsbundles' as 'pluginSetupWizard.js'.
+[INFO] [11:55:00] Bundle will be generated in directory 'src/main/webapp/jsbundles' as 'upgradeWizard.js'.
+[INFO] [11:55:00] Bundle will be generated in directory 'src/main/webapp/jsbundles' as 'config-tabbar.js'.
+[INFO] [11:55:00] Bundle will be generated in directory 'src/main/webapp/jsbundles' as 'config-scrollspy.js'.
+[INFO] [11:55:00] Bundle will be generated in directory 'src/main/webapp/jsbundles' as 'add-item.js'.
+[INFO] [11:55:00] Using gulpfile C:\Java\workspace\jenkins\war\gulpfile.js
+[INFO] [11:55:00] Starting 'log-env'...
+[INFO] [11:55:00] Source Dirs:
+[INFO] [11:55:00]  - src: src/main/js,src/main/less
+[INFO] [11:55:00]  - test: src/test/js
+[INFO] [11:55:00] Finished 'log-env' after 2.69 ms
+[INFO] [11:55:00] Starting 'bundle_page-init'...
+[INFO] [11:55:00] Starting 'bundle_pluginSetupWizard'...
+[INFO] [11:55:01] LESS CSS pre-processing completed to 'src/main/webapp/jsbundles'.
+[INFO] [11:55:01] Starting 'bundle_upgradeWizard'...
+[INFO] [11:55:01] Starting 'bundle_config-tabbar'...
+[INFO] [11:55:01] LESS CSS pre-processing completed to 'src/main/webapp/jsbundles'.
+[INFO] [11:55:01] Starting 'bundle_config-scrollspy'...
+[INFO] [11:55:01] LESS CSS pre-processing completed to 'src/main/webapp/jsbundles'.
+[INFO] [11:55:01] Starting 'bundle_add-item'...
+[INFO] [11:55:01] LESS CSS pre-processing completed to 'src/main/webapp/jsbundles'.
+[INFO] [11:55:05] Finished 'bundle_page-init' after 4.38 s
+[INFO] [11:55:05] Finished 'bundle_add-item' after 4.02 s
+[INFO] [11:55:05] Finished 'bundle_config-scrollspy' after 4.27 s
+[INFO] [11:55:05] Finished 'bundle_config-tabbar' after 4.28 s
+[INFO] [11:55:05] Finished 'bundle_upgradeWizard' after 4.47 s
+[INFO] [11:55:05] Finished 'bundle_pluginSetupWizard' after 4.75 s
+[INFO] [11:55:05] Starting 'bundle'...
+[INFO] [11:55:05] Finished 'bundle' after 31 Ојs
+[INFO] [11:55:05] Starting 'test'...
+[INFO] [11:55:05] Test specs: src/test/js/**/*-spec.js
+[INFO] [11:55:05] Testing web server started on port 18999 (http://localhost:18999). Content root: C:\Java\workspace\jenkins\war
+[INFO] [11:55:05] Test execution completed.
+[INFO] [11:55:05] Finished 'test' after 90 ms
+[INFO] [1mpluginSetupWizard.js[0m
+[INFO]   wizard shows ...
+[ERROR] HTML5 localStorage not supported by this browser.
+[INFO] [32m Passed[0m
+[INFO]   offline shows ...
+[INFO] [32m Passed[0m
+[INFO]   install defaults ...
+[INFO] [32m Passed[0m
+[INFO]   install custom ...
+[INFO] [32m Passed[0m
+[INFO]   restart required ...
+[INFO] [32m Passed[0m
+[INFO]   restart required not supported ...
+[INFO] [32m Passed[0m
+[INFO]   restart not required ...
+[INFO] [32m Passed[0m
+[INFO]   resume install ...
+[INFO] [32m Passed[0m
+[INFO]   error conditions ...
+[INFO] [32m Passed[0m
+[INFO]   restart required ...
+[INFO] [32m Passed[0m
+[INFO] [32m[1m10 of 10 passed (0 skipped, 0 disabled).[0m
+[INFO] [1mscrollspy-spec tests[0m
+[INFO]   - test scrolling ...
+[INFO] [11:55:10] Loading test content from fs resource 'C:\Java\workspace\jenkins\war/src/test/js/widgets/config/freestyle-config-scrollspy.html'.
+[INFO] *** Mocking the position/offset of the form sections:
+[INFO]  config_general: 100
+[INFO]  config__advanced_project_options: 140
+[INFO]  config__build_triggers: 180
+[INFO]  config__build: 220
+[INFO] [32m Passed[0m
+[INFO] [32m[1m1 of 1 passed (0 skipped, 0 disabled).[0m
+[INFO] [1mtabbar-spec tests[0m
+[INFO]   - test section count ...
+[INFO] [11:55:10] Loading test content from fs resource 'C:\Java\workspace\jenkins\war/src/test/js/widgets/config/freestyle-config-tabbed.html'.
+[INFO] [32m Passed[0m
+[INFO]   - test section activation ...
+[INFO] [11:55:11] Loading test content from fs resource 'C:\Java\workspace\jenkins\war/src/test/js/widgets/config/freestyle-config-tabbed.html'.
+[INFO] [32m Passed[0m
+[INFO]   - test row-group modeling ...
+[INFO] [11:55:11] Loading test content from fs resource 'C:\Java\workspace\jenkins\war/src/test/js/widgets/config/freestyle-config-tabbed.html'.
+[INFO] [32m Passed[0m
+[INFO]   - test finder - via handler triggering ...
+[INFO] [11:55:11] Loading test content from fs resource 'C:\Java\workspace\jenkins\war/src/test/js/widgets/config/freestyle-config-tabbed.html'.
+[INFO] [32m Passed[0m
+[INFO]   - test finder - via showSections() ...
+[INFO] [11:55:12] Loading test content from fs resource 'C:\Java\workspace\jenkins\war/src/test/js/widgets/config/freestyle-config-tabbed.html'.
+[INFO] [32m Passed[0m
+[INFO]   - test finder - via showSections() - in inner row-group ...
+[INFO] [11:55:12] Loading test content from fs resource 'C:\Java\workspace\jenkins\war/src/test/js/widgets/config/freestyle-config-tabbed.html'.
+[INFO] [32m Passed[0m
+[INFO]   - test adopt sections  ...
+[INFO] [11:55:13] Loading test content from fs resource 'C:\Java\workspace\jenkins\war/src/test/js/widgets/config/freestyle-config-tabbed.html'.
+[INFO] [32m Passed[0m
+[INFO]   - test getSibling  ...
+[INFO] [11:55:13] Loading test content from fs resource 'C:\Java\workspace\jenkins\war/src/test/js/widgets/config/freestyle-config-tabbed.html'.
+[INFO] [32m Passed[0m
+[INFO] [32m[1m8 of 8 passed (0 skipped, 0 disabled).[0m
+[INFO] [32m[1mSUCCESS: 19 specs, 0 failures, 0 skipped, 0 disabled in 6.731s.[0m
+[INFO] [11:55:13] Testing web server stopped.
+[INFO] 
+[INFO] --- maven-war-plugin:2.6:war (default-war) @ jenkins-war ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [jenkins-war] in [C:\Java\workspace\jenkins\war\target\jenkins]
+[INFO] Processing war project
+[INFO] Copying webapp resources [C:\Java\workspace\jenkins\war\src\main\webapp]
+[INFO] Webapp assembled in [6072 msecs]
+[INFO] Building war: C:\Java\workspace\jenkins\war\target\jenkins.war
+[INFO] 
+[INFO] --- build-helper-maven-plugin:1.7:attach-artifact (deploy-war-for-test) @ jenkins-war ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.3.1:install (default-install) @ jenkins-war ---
+[INFO] Installing C:\Java\workspace\jenkins\war\target\jenkins.war to C:\Users\Ilya\.m2\repository\org\jenkins-ci\main\jenkins-war\2.46-SNAPSHOT\jenkins-war-2.46-SNAPSHOT.war
+[INFO] Installing C:\Java\workspace\jenkins\war\pom.xml to C:\Users\Ilya\.m2\repository\org\jenkins-ci\main\jenkins-war\2.46-SNAPSHOT\jenkins-war-2.46-SNAPSHOT.pom
+[INFO] Installing C:\Java\workspace\jenkins\war\target\classes\META-INF\licenses.xml to C:\Users\Ilya\.m2\repository\org\jenkins-ci\main\jenkins-war\2.46-SNAPSHOT\jenkins-war-2.46-SNAPSHOT.license.xml
+[INFO] Installing C:\Java\workspace\jenkins\war\target\classes\META-INF\licenses.html to C:\Users\Ilya\.m2\repository\org\jenkins-ci\main\jenkins-war\2.46-SNAPSHOT\jenkins-war-2.46-SNAPSHOT.license.html
+[INFO] Installing C:\Java\workspace\jenkins\war\target\jenkins.war to C:\Users\Ilya\.m2\repository\org\jenkins-ci\main\jenkins-war\2.46-SNAPSHOT\jenkins-war-2.46-SNAPSHOT-war-for-test.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] Jenkins main module ................................ SUCCESS [  7.249 s]
+[INFO] Jenkins cli ........................................ SUCCESS [ 29.247 s]
+[INFO] Jenkins core ....................................... SUCCESS [10:38 min]
+[INFO] Jenkins war ........................................ SUCCESS [01:22 min]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 12:41 min
+[INFO] Finished at: 2017-03-24T11:55:30+03:00
+[INFO] Final Memory: 65M/369M
+[INFO] ------------------------------------------------------------------------
+Telegram notification should have been sent
+Finished: SUCCESS

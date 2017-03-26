@@ -30,7 +30,6 @@ import hudson.XmlFile;
 import hudson.Util;
 import hudson.Functions;
 import hudson.BulkChange;
-import hudson.cli.declarative.CLIResolver;
 import hudson.model.listeners.ItemListener;
 import hudson.model.listeners.SaveableListener;
 import hudson.security.AccessControlled;
@@ -728,21 +727,6 @@ public abstract class AbstractItem extends Actionable implements Item, HttpDelet
         return super.toString() + '[' + (parent != null ? getFullName() : "?/" + name) + ']';
     }
 
-    /**
-     * Used for CLI binding.
-     */
-    @CLIResolver
-    public static AbstractItem resolveForCLI(
-            @Argument(required=true,metaVar="NAME",usage="Job name") String name) throws CmdLineException {
-        // TODO can this (and its pseudo-override in AbstractProject) share code with GenericItemOptionHandler, used for explicit CLICommand’s rather than CLIMethod’s?
-        AbstractItem item = Jenkins.getInstance().getItemByFullName(name, AbstractItem.class);
-        if (item==null) {
-            AbstractProject project = AbstractProject.findNearest(name);
-            throw new CmdLineException(null, project == null ? Messages.AbstractItem_NoSuchJobExistsWithoutSuggestion(name)
-                    : Messages.AbstractItem_NoSuchJobExists(name, project.getFullName()));
-        }
-        return item;
-    }
 
     /**
      * Replaceable pronoun of that points to a job. Defaults to "Job"/"Project" depending on the context.

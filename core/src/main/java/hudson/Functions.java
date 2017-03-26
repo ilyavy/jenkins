@@ -27,7 +27,6 @@ package hudson;
 
 import hudson.model.Slave;
 import jenkins.util.SystemProperties;
-import hudson.cli.CLICommand;
 import hudson.console.ConsoleAnnotationDescriptor;
 import hudson.console.ConsoleAnnotatorFactory;
 import hudson.init.InitMilestone;
@@ -1933,16 +1932,6 @@ public class Functions {
      */
     public static Object rawHtml(Object o) {
         return o==null ? null : new RawHtmlArgument(o);
-    }
-
-    public static ArrayList<CLICommand> getCLICommands() {
-        ArrayList<CLICommand> all = new ArrayList<CLICommand>(CLICommand.all());
-        Collections.sort(all, new Comparator<CLICommand>() {
-            public int compare(CLICommand cliCommand, CLICommand cliCommand1) {
-                return cliCommand.getName().compareTo(cliCommand1.getName());
-            }
-        });
-        return all;
     }
 
     /**
