@@ -27,7 +27,6 @@ import hudson.DescriptorExtensionList;
 import hudson.Extension;
 import hudson.ExtensionPoint;
 import hudson.AbortException;
-import hudson.cli.CLICommand;
 import hudson.util.DescriptorList;
 
 import java.io.Serializable;
@@ -189,25 +188,6 @@ public abstract class ParameterDefinition implements
     @CheckForNull
     public abstract ParameterValue createValue(StaplerRequest req);
 
-
-    /**
-     * Create a parameter value from the string given in the CLI.
-     *
-     * @param command
-     *      This is the command that got the parameter. You can use its {@link CLICommand#checkChannel()}
-     *      for interacting with the CLI JVM.
-     * @throws AbortException
-     *      If the CLI processing should be aborted. Hudson will report the error message
-     *      without stack trace, and then exits this command. Useful for graceful termination.
-     * @throws Exception
-     *      All the other exceptions cause the stack trace to be dumped, and then
-     *      the command exits with an error code.
-     * @since 1.334
-     */
-    @CheckForNull
-    public ParameterValue createValue(CLICommand command, String value) throws IOException, InterruptedException {
-        throw new AbortException("CLI parameter submission is not supported for the "+getClass()+" type. Please file a bug report for this");
-    }
     
     /**
      * Returns default parameter value for this definition.

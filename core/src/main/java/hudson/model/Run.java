@@ -44,7 +44,6 @@ import hudson.console.PlainTextConsoleOutputStream;
 import jenkins.util.SystemProperties;
 import hudson.Util;
 import hudson.XmlFile;
-import hudson.cli.declarative.CLIMethod;
 import hudson.model.Descriptor.FormException;
 import hudson.model.listeners.RunListener;
 import hudson.model.listeners.SaveableListener;
@@ -2159,13 +2158,6 @@ public abstract class Run <JobT extends Job<JobT,RunT>,RunT extends Run<JobT,Run
         rsp.forwardToPreviousPage(req);
     }
 
-    /**
-     * Marks this build to keep the log.
-     */
-    @CLIMethod(name="keep-build")
-    public final void keepLog() throws IOException {
-        keepLog(true);
-    }
 
     public void keepLog(boolean newValue) throws IOException {
         checkPermission(newValue ? UPDATE : DELETE);

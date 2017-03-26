@@ -51,7 +51,6 @@ THE SOFTWARE.
     <module>core</module>
     <module>war</module>
     <module>test</module>
-    <module>cli</module>
   </modules>
 
   <scm>
@@ -399,6 +398,7 @@ THE SOFTWARE.
 				<exclude>**/*UtilTest.java</exclude>
 				<exclude>**/*RunIdMigratorTest.java</exclude>
 				<exclude>**/*VirtualFileTest.java</exclude>
+				<exclude>**/*FilePathTest.java</exclude>
             </excludes>
             <argLine>-noverify</argLine> <!-- some versions of JDK7/8 causes VerifyError during mock tests: http://code.google.com/p/powermock/issues/detail?id=504 -->
             <systemPropertyVariables>
