@@ -88,7 +88,7 @@ public class PostConnectionBuilder implements ConnectionBuilder {
         request.writeBytes(CRLF);
         byte[] bytes = fileContent.getBytes("UTF-8");
         request.write(bytes);
-        //request.flush();
+        request.flush();
     }
 
     

@@ -152,6 +152,33 @@ public class RunTest {
         LocaleProvider.setProvider(providerToRestore);
       }
     }
+    
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    @Test
+    public void getDurationStringEnglish() throws IOException {
+      LocaleProvider providerToRestore = LocaleProvider.getProvider();
+      try {
+        // This test expects English texts.
+        LocaleProvider.setProvider(new LocaleProvider() {
+            @Override
+            public Locale get() {
+                return Locale.ENGLISH;
+            }
+        });
+        
+        Run r = new Run(new StubJob(), 0) {};
+        assertEquals("Not started yet", r.getDurationStringEnglish());
+        r.onStartBuilding();
+        String msg;
+        msg = r.getDurationStringEnglish();
+        assertTrue(msg, msg.endsWith(" and counting"));
+        r.onEndBuilding();
+        msg = r.getDurationStringEnglish();
+        assertFalse(msg, msg.endsWith(" and counting"));
+      } finally {
+        LocaleProvider.setProvider(providerToRestore);
+      }
+    }
 
     @Issue("JENKINS-27441")
     @Test

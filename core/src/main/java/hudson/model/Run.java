@@ -725,12 +725,25 @@ public abstract class Run <JobT extends Job<JobT,RunT>,RunT extends Run<JobT,Run
             return Messages.Run_NotStartedYet();
         } else if (isBuilding()) {
             return Messages.Run_InProgressDuration(
-                    Util.getTimeSpanString(System.currentTimeMillis()-startTime));
+                    Util.getTimeSpanString(
+                            System.currentTimeMillis()-startTime));
         }
         return Util.getTimeSpanString(duration);
     }
-
+    
+    /**
+     * Gets the string that says how long the build took to run.
+     * Forced to be in English
+     * @return
+     */
     public @Nonnull String getDurationStringEnglish() {
+        if (hasntStartedYet()) {
+            return Messages.Run_NotStartedYet();
+        } else if (isBuilding()) {
+            return Messages.Run_InProgressDuration(
+                    Util.getTimeSpanStringEnglish(
+                            System.currentTimeMillis()-startTime));
+        }
         return Util.getTimeSpanStringEnglish(duration);
     }
 

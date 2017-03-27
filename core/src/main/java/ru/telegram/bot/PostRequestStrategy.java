@@ -2,14 +2,11 @@ package ru.telegram.bot;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.logging.Level;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -64,24 +61,5 @@ public class PostRequestStrategy implements RequestStrategy {
         } catch(IOException e) {
             e.printStackTrace();
         }
-       
-    }
-    
-    public static void main(String[] args) {
-        StringBuilder sb = new StringBuilder();
-        sb.append("https://api.telegram.org/bot");
-        sb.append("309671090");
-        sb.append(":");
-        sb.append("AAF2bRdghkIE2qTgOaYon2FTQcHlAuwjRJ8");
-        sb.append("/sendMessage");
-
-        Map<String, String> params = new LinkedHashMap<>();
-        params.put("chat_id", "-218207127");
-        params.put("text", "test message");
-
-        String url = sb.toString();
-        
-        RequestStrategy requestStrategy = new PostRequestStrategy();
-        requestStrategy.sendMessage(url, params, null, null);
     }
 }

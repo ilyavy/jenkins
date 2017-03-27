@@ -47,7 +47,7 @@ public class TelegramRunListenerTest {
     @Before
     public void setUp() throws Exception {
         when(r.getFullDisplayName()).thenReturn(displayName);
-        when(r.getDurationString()).thenReturn(durationStr);
+        when(r.getDurationStringEnglish()).thenReturn(durationStr);
         when(r.getResult()).thenReturn(Result.SUCCESS);
         when(j.isTelegramNotify()).thenReturn(true);
         
@@ -80,7 +80,7 @@ public class TelegramRunListenerTest {
     @Test
     public void onCompletedSuccessTest1() throws Exception {
         String message = "Build " + r.getFullDisplayName() +
-                " has finished for " + r.getDurationString() + 
+                " has finished for " + r.getDurationStringEnglish() + 
                 ". Finished: " + r.getResult();
         String notificationLog = "Telegram notification should have been sent";
 
@@ -112,7 +112,7 @@ public class TelegramRunListenerTest {
         doThrow(re).when(telegramApi).sendMessage(any(String.class));
 
         String message = "Build " + r.getFullDisplayName() +
-                " has finished for " + r.getDurationString() + ". Finished: " + r.getResult();
+                " has finished for " + r.getDurationStringEnglish() + ". Finished: " + r.getResult();
         String notificationLog = "Error. Telegram notification wasn't sent";
 
         telegramRunListener.onCompleted(r, taskListener);
