@@ -730,6 +730,10 @@ public abstract class Run <JobT extends Job<JobT,RunT>,RunT extends Run<JobT,Run
         return Util.getTimeSpanString(duration);
     }
 
+    public @Nonnull String getDurationStringEnglish() {
+        return Util.getTimeSpanStringEnglish(duration);
+    }
+
     /**
      * Gets the millisecond it took to build.
      */
