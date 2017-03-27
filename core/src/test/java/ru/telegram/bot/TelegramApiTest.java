@@ -10,6 +10,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -27,9 +30,11 @@ public class TelegramApiTest {
     private final String token = "token";
     private final String chatId = "chatId";
 
+    
     @InjectMocks
     private TelegramApi telegramApi = 
             new TelegramApi(requestStrategy);
+    
     
     @Before
     public void setUp() throws Exception {
@@ -38,6 +43,7 @@ public class TelegramApiTest {
         when(j.getTelegramBotToken()).thenReturn(token);
     }
 
+    
     @Test
     public void sendMessageTest() throws Exception {
         // Short message test
@@ -58,7 +64,33 @@ public class TelegramApiTest {
         }
         
         // Long message test
+        File file = new File(
+                getClass().getResource("test_report.txt").getPath());
+        if (!file.exists()) {
+            System.out.println("WARNING. Test report file ('test_report.txt')" +
+                    "was not found. Test is skiped");
+        }
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String line = "";
+        StringBuilder longMessageBuilder = new StringBuilder();
+        while ((line = br.readLine()) != null) {
+            longMessageBuilder.append(line);
+        }
+        String longMessage = longMessageBuilder.toString();
         
+        telegramApi.sendMessage(longMessage);
+        assertEquals(requestStrategy.getUrl(),
+                "https://api.telegram.org/bot" + botId + ":" + 
+                        token + "/sendDocument");
+        params = requestStrategy.getParams();
+        assertEquals(2, params.size());
+        for (Entry<String, String> entry : params.entrySet()) {
+            if ("chat_id".equals(entry.getKey())) {
+                assertEquals(chatId, entry.getValue());
+            }
+            if ("document".equals(entry.getKey())) {
+                assertEquals(longMessage, entry.getValue());
+            }
+        }
     }
-
 }
