@@ -1,87 +1,74 @@
 package ru.telegram.bot;
 
-import java.io.BufferedReader;
+import jenkins.model.Jenkins;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
-
-import javax.net.ssl.HttpsURLConnection;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * API for telegram notifications
  */
 public class TelegramApi {
-    private final String botId;
-    private final String token;
-    private final String groupId;
-    
-    
-    public String getBotId() {
-        return botId;
-    }
 
-    public String getToken() {
-        return token;
-    }
+    private static final Logger LOGGER = 
+            Logger.getLogger(TelegramApi.class.getName());
 
-    public String getGroupId() {
-        return groupId;
-    }
+    /**
+     * The strategy for handling requests
+     */
+    private RequestStrategy requestStrategy;
     
     /**
-     * Constructor
-     * @param botId - bot's id
-     * @param token - bot's token
-     * @param groupId - id of the group, which has the
-     * specified bot as a member and where notifications
-     * will be sent
+     * Jenkins instance used to get bot id, token and group_id
      */
-    public TelegramApi(final String botId,
-            final String token, final String groupId) {
-        this.botId = botId;
-        this.token = token;
-        this.groupId = groupId;
+    private Jenkins j;
+
+    /**
+     * Constructor
+     */
+    public TelegramApi(final RequestStrategy requestStrategy) {
+        this.requestStrategy = requestStrategy;
+        this.j = Jenkins.getInstance();
     }
+    
     
     /**
      * Sends the message to the group in behalf of the bot
      * @param message
-     * @return - String representation of the response (json)
-     * @throws IOException 
+     * @return - void
+     * @throws IOException
      */
-    public String sendMessage(final String message) throws IOException {
+    public void sendMessage(final String message) throws IOException {
+        String fileFieldKeyName = null;
+        String fileName = null;
+        Map<String, String> apiSpec = new HashMap<>();
+        
+        if (message.getBytes("UTF-8").length < 1000) {
+            apiSpec.put("methodName", "sendMessage");
+            apiSpec.put("paramName", "text");
+        } else {
+            apiSpec.put("methodName", "sendDocument");
+            apiSpec.put("paramName", "document");
+            fileName = "report.txt";
+            fileFieldKeyName = "document";
+        }
+        
         StringBuilder sb = new StringBuilder();
         sb.append("https://api.telegram.org/bot");
-        sb.append(botId);
+        sb.append(j.getTelegramBotID());
         sb.append(":");
-        sb.append(token);
-        sb.append("/sendMessage?");
-        sb.append("chat_id=");
-        sb.append(groupId);
-        sb.append("&text=");
-        sb.append(URLEncoder.encode(message, "UTF-8"));
-        
-        HttpsURLConnection urlConn = null;
-        URL url;
-        url = new URL(sb.toString());
-        System.out.println(
-                "TelegramAPI > message will be sent using url: " + url);
-        
-        urlConn = (HttpsURLConnection) url.openConnection();
-        urlConn.connect();
-        
-        StringBuilder response = new StringBuilder();
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(urlConn.getInputStream(), "UTF-8"));
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
-        }
-        in.close();
+        sb.append(j.getTelegramBotToken());
+        sb.append("/" + apiSpec.get("methodName"));
 
-        return response.toString();
+        Map<String, String> params = new LinkedHashMap<>();
+        params.put("chat_id", j.getTelegramGroupID());
+        params.put(apiSpec.get("paramName"), message);
+
+        String url = sb.toString();
+        LOGGER.info("TelegramAPI > message will be sent using url: " + url);
+        
+        requestStrategy.sendMessage(url, params, fileFieldKeyName, fileName);
     }
 }

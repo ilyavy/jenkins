@@ -408,6 +408,42 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
     private String buildsDir = "${ITEM_ROOTDIR}/builds";
 
     /**
+     * On/off Telegram notifications
+     */
+    private boolean telegramNotify;
+
+    /**
+     * Bot id for Telegram notifications
+     */
+    private String telegramBotID = "";
+
+    /**
+     * Bot token for Telegram notifications
+     */
+    private String telegramBotToken = "";
+
+    /**
+     * Group id for Telegram notifications
+     */
+    private String telegramGroupID = "";
+
+    public String getTelegramBotID() {
+        return telegramBotID;
+    }
+
+    public String getTelegramBotToken() {
+        return telegramBotToken;
+    }
+
+    public String getTelegramGroupID() {
+        return telegramGroupID;
+    }
+
+    public boolean isTelegramNotify() {
+        return telegramNotify;
+    }
+
+    /**
      * Message displayed in the top page.
      */
     private String systemMessage;
@@ -3603,6 +3639,11 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
             buildsDir = json.getString("rawBuildsDir");
 
             systemMessage = Util.nullify(req.getParameter("system_message"));
+
+            telegramNotify = json.getBoolean("send_tg_notifications");
+            telegramBotID = json.getString("tgm_bot_id");
+            telegramBotToken = json.getString("tgm_bot_token");
+            telegramGroupID = json.getString("tgm_group_id");
 
             boolean result = true;
             for (Descriptor<?> d : Functions.getSortedDescriptorsForGlobalConfigUnclassified())

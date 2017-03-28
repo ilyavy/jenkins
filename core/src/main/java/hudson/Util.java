@@ -894,6 +894,29 @@ public class Util {
             return Messages.Util_millisecond(millisecs);
     }
 
+    public static String getTimeSpanStringEnglish(long duration) {
+
+        StringBuilder sb = new StringBuilder();
+
+        long hours = duration / ONE_HOUR_MS;
+        duration %= ONE_HOUR_MS;
+        long minutes = duration / ONE_MINUTE_MS;
+        duration %= ONE_MINUTE_MS;
+        long seconds = duration / ONE_SECOND_MS;
+        duration %= ONE_SECOND_MS;
+        long millisecs = duration;
+
+        if (hours > 0)
+            return makeTimeSpanStringEnglish(sb, hours, "hour", minutes, "minute");
+        else if (minutes > 0)
+            return makeTimeSpanStringEnglish(sb, minutes, "minute", seconds, "second");
+        else if (seconds >= 1)
+            return sb.append(seconds + " seconds").toString();
+        else if (millisecs >= 100)
+            return sb.append((float) (millisecs / 10) / 100 + " seconds").toString(); // render "0.12 sec".
+        else
+            return sb.append(millisecs + " millisecs").toString();
+    }
 
     /**
      * Create a string representation of a time duration.  If the quantity of
@@ -915,6 +938,24 @@ public class Util {
         return text;
     }
 
+    private static String makeTimeSpanStringEnglish(StringBuilder text, long bigUnit,
+                                                    String bigLabel,
+                                                    long smallUnit,
+                                                    String smallLabel) {
+
+        String bigL; // to add 's' in case its equal to 1
+        String smallL;
+
+        if (bigUnit > 1) bigL = bigLabel + 's';
+        else bigL = bigLabel;
+        if (smallUnit > 1) smallL = smallLabel + 's';
+        else smallL = smallLabel;
+
+        if (smallUnit > 0) text.append(String.valueOf(bigUnit) + ' ' + bigL + ' ' + String.valueOf(smallUnit) + ' ' + smallL);
+        else text.append(String.valueOf(bigUnit) + ' ' + bigL);
+
+        return text.toString();
+    }
 
     /**
      * Get a human readable string representing strings like "xxx days ago",
