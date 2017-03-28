@@ -2,6 +2,7 @@ package ru.telegram.bot;
 
 import jenkins.model.Jenkins;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -38,9 +39,9 @@ public class TelegramApi {
      * Sends the message to the group in behalf of the bot
      * @param message
      * @return - void
-     * @throws IOException 
+     * @throws IOException
      */
-    public void sendMessage(final String message) throws Exception {
+    public void sendMessage(final String message) throws IOException {
         String fileFieldKeyName = null;
         String fileName = null;
         Map<String, String> apiSpec = new HashMap<>();
