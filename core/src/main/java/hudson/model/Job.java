@@ -30,7 +30,6 @@ import hudson.Extension;
 import hudson.ExtensionPoint;
 import hudson.PermalinkList;
 import hudson.Util;
-import hudson.cli.declarative.CLIResolver;
 import hudson.model.Descriptor.FormException;
 import hudson.model.Fingerprint.Range;
 import hudson.model.Fingerprint.RangeSet;
@@ -769,18 +768,6 @@ public abstract class Job<JobT extends Job<JobT, RunT>, RunT extends Run<JobT, R
         return getBuilds().byTimestamp(start,end);
     }
 
-    @CLIResolver
-    public RunT getBuildForCLI(@Argument(required=true,metaVar="BUILD#",usage="Build number") String id) throws CmdLineException {
-        try {
-            int n = Integer.parseInt(id);
-            RunT r = getBuildByNumber(n);
-            if (r==null)
-                throw new CmdLineException(null, "No such build '#"+n+"' exists");
-            return r;
-        } catch (NumberFormatException e) {
-            throw new CmdLineException(null, id+ "is not a number");
-        }
-    }
 
     /**
      * Gets the youngest build #m that satisfies <tt>n&lt;=m</tt>.

@@ -44,7 +44,6 @@ import hudson.console.PlainTextConsoleOutputStream;
 import jenkins.util.SystemProperties;
 import hudson.Util;
 import hudson.XmlFile;
-import hudson.cli.declarative.CLIMethod;
 import hudson.model.Descriptor.FormException;
 import hudson.model.listeners.RunListener;
 import hudson.model.listeners.SaveableListener;
@@ -726,9 +725,26 @@ public abstract class Run <JobT extends Job<JobT,RunT>,RunT extends Run<JobT,Run
             return Messages.Run_NotStartedYet();
         } else if (isBuilding()) {
             return Messages.Run_InProgressDuration(
-                    Util.getTimeSpanString(System.currentTimeMillis()-startTime));
+                    Util.getTimeSpanString(
+                            System.currentTimeMillis()-startTime));
         }
         return Util.getTimeSpanString(duration);
+    }
+    
+    /**
+     * Gets the string that says how long the build took to run.
+     * Forced to be in English
+     * @return
+     */
+    public @Nonnull String getDurationStringEnglish() {
+        if (hasntStartedYet()) {
+            return Messages.Run_NotStartedYet();
+        } else if (isBuilding()) {
+            return Messages.Run_InProgressDuration(
+                    Util.getTimeSpanStringEnglish(
+                            System.currentTimeMillis()-startTime));
+        }
+        return Util.getTimeSpanStringEnglish(duration);
     }
 
     /**
@@ -2159,13 +2175,6 @@ public abstract class Run <JobT extends Job<JobT,RunT>,RunT extends Run<JobT,Run
         rsp.forwardToPreviousPage(req);
     }
 
-    /**
-     * Marks this build to keep the log.
-     */
-    @CLIMethod(name="keep-build")
-    public final void keepLog() throws IOException {
-        keepLog(true);
-    }
 
     public void keepLog(boolean newValue) throws IOException {
         checkPermission(newValue ? UPDATE : DELETE);

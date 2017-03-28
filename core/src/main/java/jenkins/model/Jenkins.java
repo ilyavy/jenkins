@@ -38,8 +38,6 @@ import hudson.Launcher.LocalLauncher;
 import jenkins.AgentProtocol;
 import jenkins.diagnostics.URICheckEncodingMonitor;
 import jenkins.util.SystemProperties;
-import hudson.cli.declarative.CLIMethod;
-import hudson.cli.declarative.CLIResolver;
 import hudson.init.InitMilestone;
 import hudson.init.InitStrategy;
 import hudson.init.TermMilestone;
@@ -408,6 +406,42 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
      * @see #getBuildDirFor(Job)
      */
     private String buildsDir = "${ITEM_ROOTDIR}/builds";
+
+    /**
+     * On/off Telegram notifications
+     */
+    private boolean telegramNotify;
+
+    /**
+     * Bot id for Telegram notifications
+     */
+    private String telegramBotID = "";
+
+    /**
+     * Bot token for Telegram notifications
+     */
+    private String telegramBotToken = "";
+
+    /**
+     * Group id for Telegram notifications
+     */
+    private String telegramGroupID = "";
+
+    public String getTelegramBotID() {
+        return telegramBotID;
+    }
+
+    public String getTelegramBotToken() {
+        return telegramBotToken;
+    }
+
+    public String getTelegramGroupID() {
+        return telegramGroupID;
+    }
+
+    public boolean isTelegramNotify() {
+        return telegramNotify;
+    }
 
     /**
      * Message displayed in the top page.
@@ -783,7 +817,6 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
      * @return The instance.
      * @throws IllegalStateException {@link Jenkins} has not been started, or was already shut down
      */
-    @CLIResolver
     @Nonnull
     public static Jenkins getInstance() {
         Jenkins instance = HOLDER.getInstance();
@@ -1920,7 +1953,6 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
         return r;
     }
 
-    @CLIResolver
     public @CheckForNull Computer getComputer(@Argument(required=true,metaVar="NAME",usage="Node name") @Nonnull String name) {
         if(name.equals("(master)"))
             name = "";
@@ -3608,6 +3640,11 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
 
             systemMessage = Util.nullify(req.getParameter("system_message"));
 
+            telegramNotify = json.getBoolean("send_tg_notifications");
+            telegramBotID = json.getString("tgm_bot_id");
+            telegramBotToken = json.getString("tgm_bot_token");
+            telegramGroupID = json.getString("tgm_group_id");
+
             boolean result = true;
             for (Descriptor<?> d : Functions.getSortedDescriptorsForGlobalConfigUnclassified())
                 result &= configureDescriptor(req,json,d);
@@ -4063,7 +4100,6 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
      *
      * This first replaces "app" to {@link HudsonIsRestarting}
      */
-    @CLIMethod(name="restart")
     public void doRestart(StaplerRequest req, StaplerResponse rsp) throws IOException, ServletException, RestartNotSupportedException {
         checkPermission(ADMINISTER);
         if (req != null && req.getMethod().equals("GET")) {
@@ -4084,7 +4120,6 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
      *
      * @since 1.332
      */
-    @CLIMethod(name="safe-restart")
     public HttpResponse doSafeRestart(StaplerRequest req) throws IOException, ServletException, RestartNotSupportedException {
         checkPermission(ADMINISTER);
         if (req != null && req.getMethod().equals("GET"))
@@ -4192,7 +4227,6 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
      * Shutdown the system.
      * @since 1.161
      */
-    @CLIMethod(name="shutdown")
     @RequirePOST
     public void doExit( StaplerRequest req, StaplerResponse rsp ) throws IOException {
         checkPermission(ADMINISTER);
@@ -4214,7 +4248,6 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
      * Shutdown the system safely.
      * @since 1.332
      */
-    @CLIMethod(name="safe-shutdown")
     @RequirePOST
     public HttpResponse doSafeExit(StaplerRequest req) throws IOException {
         checkPermission(ADMINISTER);
