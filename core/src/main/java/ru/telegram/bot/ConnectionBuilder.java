@@ -4,9 +4,9 @@ import java.io.IOException;
 import javax.net.ssl.HttpsURLConnection;
 
 /**
- * RequestBuilder interface. Method response() should implement
+ * RequestBuilder interface. Method getConnection() should implement
  * connection to a server by the specified in constructor
- * request url and return the server's response.
+ * request url and return HttpsURLConnection.
  */
 public interface ConnectionBuilder {
     
