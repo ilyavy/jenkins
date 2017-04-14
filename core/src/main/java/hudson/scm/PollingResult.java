@@ -57,6 +57,11 @@ public final class PollingResult implements Serializable {
          * you can do it.
          */
         INSIGNIFICANT,
+        /*
+        * There are changes between states that warrant a new build, but added by untrusted commiter.
+        * Build will not be scheduled.
+        * */
+        UNAUTHORIZED_USER,
         /**
          * There are changes between states that warrant a new build. Jenkins will eventually
          * schedule a new build for this change, subject to other considerations
@@ -91,13 +96,18 @@ public final class PollingResult implements Serializable {
     }
 
     public boolean hasChanges() {
-        return change.ordinal() > Change.INSIGNIFICANT.ordinal();
+        return change.ordinal() > Change.UNAUTHORIZED_USER.ordinal();
     }
 
     /**
      * Constant to indicate no changes in the remote repository.
      */
     public static final PollingResult NO_CHANGES = new PollingResult(Change.NONE);
+
+    /**
+     * Constant to indicate changes made by untrusted user.
+     */
+    public static final PollingResult UNAUTHORIZED_USER = new PollingResult(Change.UNAUTHORIZED_USER);
 
     public static final PollingResult SIGNIFICANT = new PollingResult(Change.SIGNIFICANT);
 
