@@ -86,7 +86,9 @@ import org.kohsuke.stapler.export.ExportedBean;
  */
 @ExportedBean
 public abstract class SCM implements Describable<SCM>, ExtensionPoint {
-
+    
+    private Jenkins j = Jenkins.getInstance(); 
+    
     /** JENKINS-35098: discouraged */
     @SuppressWarnings("FieldMayBeFinal")
     private static boolean useAutoBrowserHolder = SystemProperties.getBoolean(SCM.class.getName() + ".useAutoBrowserHolder");
@@ -754,4 +756,65 @@ public abstract class SCM implements Describable<SCM>, ExtensionPoint {
         return null;
     }
 
+    
+    /**
+     * Returns true if the system implemented new interface
+     * for SCM and can say what user made last commit.
+     * <p>
+     * This flag affects the behavior of code management system.
+     * If the system claims that it can distinct authors, it is
+     * assumed that method getCommitAuthor() is also implemented.
+     * If not the system's behavior will be the same as for
+     * canDistinctAuthors() == false.
+     * @return
+     */
+    public boolean canDistinctAuthors() {
+        return false;
+    }
+    
+    
+    /**
+     * Returns the author of the last commit.
+     * This method should be overrided, if the system
+     * claims that it can distinct authors.
+     * @return CommitAuthor
+     */
+    public CommitAuthor getCommitAuthor() {
+        return null;
+    }
+    
+    
+    /**
+     * The implementation of determining rather the author
+     * of the last commit is allowed to trigger a build
+     * @return
+     */
+    public final boolean isCommitAuthorAllowedToBuild() {
+        CommitAuthor author = getCommitAuthor();
+        if (author == null) {
+            return true;
+        }
+        List<String> unAuthors = j.getUnathorizedAuthors();
+        
+        for (String unAuthor : unAuthors) {
+            if (author.getName().equals(unAuthor)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    
+    /** Feature 3 - modification - in process */
+    public final PollingResult compareRemoteRevisionAuthorWith(@Nonnull Job<?,?> project, @Nullable Launcher launcher, @Nullable FilePath workspace, @Nonnull TaskListener listener, @Nonnull SCMRevisionState baseline) throws IOException, InterruptedException {
+        PollingResult result = compareRemoteRevisionWith(project, launcher, workspace, listener, baseline);
+        
+        if (canDistinctAuthors()) {
+            if (!isCommitAuthorAllowedToBuild()) {
+                return PollingResult.UNAUTHORIZED_USER;
+            }
+        }
+        
+        return result;
+    }
 }

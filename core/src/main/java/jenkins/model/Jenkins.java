@@ -443,6 +443,17 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
         return telegramNotify;
     }
 
+    
+    /**
+     * Those, whose changes should not trigger a building
+     */
+    private List<String> unathorizedAuthors;
+    
+    public List<String> getUnathorizedAuthors() {
+        return unathorizedAuthors;
+    }
+    
+    
     /**
      * Message displayed in the top page.
      */
