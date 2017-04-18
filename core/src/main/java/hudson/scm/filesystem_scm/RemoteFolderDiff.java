@@ -126,9 +126,6 @@ public class RemoteFolderDiff extends FolderDiff {
 			files.addAll(newFiles);
 			files.addAll(delFiles);
 			
-			System.out.println("CHECKOUT >> HERE ARE CHANGED FILES(" 
-                    + files.size() + ") >> " + files);
-			
 			return files;
 		}
 

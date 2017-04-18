@@ -154,9 +154,6 @@ public class FSSCM extends SCM {
 		setupRemoteFolderDiff(callable, build.getProject(), allowDeleteList.getList());
 		List<FolderDiff.Entry> list = workspace.act(callable);
 		
-		System.out.println("FSSM.checkout() is invoked. Changes: " 
-		        + list + " -> " + list.size());
-		
 		// maintain the watch list
 		for(FolderDiff.Entry entry : list) {
 			if ( FolderDiff.Entry.Type.DELETED.equals(entry.getType()) ) {
