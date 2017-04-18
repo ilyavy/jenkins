@@ -31,7 +31,6 @@ public class SimpleAntWildcardFilterTest {
 		
 		IOFileFilter iof = new SimpleAntWildcardFilter("C:/users/**/a?.tx?");
 		Collection<File> coll = (Collection<File>)FileUtils.listFiles(new File(tmp + sep + "abc001234"), iof, HiddenFileFilter.VISIBLE);
-		//Assert.assertEquals(2, coll.size());
 	}	
 
 	@Test

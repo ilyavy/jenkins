@@ -462,12 +462,6 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
     }
     
     public List<String> getUnathorizedAuthors() {
-        System.out.println("UNASTR >> ");
-        System.out.println(isUnathorizedAuthorsOn());
-        System.out.println(getUnathorizedAuthorsString());
-        
-        System.out.println(telegramBotID);
-        
         if (unathorizedAuthorsString == null) {
             return new ArrayList<String>();
         }

@@ -218,8 +218,6 @@ public class FSSCM extends SCM {
 		boolean changed = workspace.act(callable);
 		
 		changedFiles = callable.getChangedFiles();
-		System.out.println("HERE ARE CHANGED FILES(" 
-                + changedFiles.size() + ") >> " + changedFiles);
 		
 		String str = callable.getLog();
 		if ( str.length() > 0 ) log.println(str);

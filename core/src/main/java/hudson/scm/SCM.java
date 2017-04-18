@@ -407,7 +407,6 @@ public abstract class SCM implements Describable<SCM>, ExtensionPoint {
                 baseline2 = calcRevisionsFromBuild(project.getLastBuild(), launcher, listener);
             }
             
-            System.out.println("SCM >> poll() >> compareRemoteRevisionWith()");
             return compareRemoteRevisionWith(project, launcher, workspace, listener, baseline2);
         } else {
             return pollChanges(project,launcher,workspace,listener) ? PollingResult.SIGNIFICANT : PollingResult.NO_CHANGES;
