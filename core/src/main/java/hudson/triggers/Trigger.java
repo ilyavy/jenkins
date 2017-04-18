@@ -88,6 +88,8 @@ public abstract class Trigger<J extends Item> implements Describable<Trigger<?>>
      */
     public void start(J project, boolean newInstance) {
         this.job = project;
+        
+        System.out.println("TRIGGER STARTED. PROJECT >> " + project);
 
         try {// reparse the tabs with the job as the hash
             if (spec != null) {

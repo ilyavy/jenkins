@@ -1,7 +1,15 @@
 package hudson.scm.filesystem_scm;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.FileOwnerAttributeView;
+import java.nio.file.attribute.UserPrincipal;
 import java.util.*;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 import org.kohsuke.stapler.QueryParameter;
 import org.kohsuke.stapler.StaplerRequest;
@@ -11,9 +19,11 @@ import hudson.Launcher;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
 import hudson.model.BuildListener;
+import hudson.model.Job;
 import hudson.model.Run;
 import hudson.model.TaskListener;
 import hudson.scm.ChangeLogParser;
+import hudson.scm.CommitAuthor;
 import hudson.scm.PollingResult;
 import hudson.scm.SCMRevisionState;
 import hudson.scm.SCM;
@@ -51,6 +61,9 @@ public class FSSCM extends SCM {
 	 * 
 	 */
 	private String[] filters;
+	
+	
+	private List<FolderDiff.Entry> changedFiles;
 	
 	// Don't use DataBoundConsturctor, it is still not mature enough, many HTML form elements are not binded
 	// @DataBoundConstructor
@@ -141,6 +154,9 @@ public class FSSCM extends SCM {
 		setupRemoteFolderDiff(callable, build.getProject(), allowDeleteList.getList());
 		List<FolderDiff.Entry> list = workspace.act(callable);
 		
+		System.out.println("FSSM.checkout() is invoked. Changes: " 
+		        + list + " -> " + list.size());
+		
 		// maintain the watch list
 		for(FolderDiff.Entry entry : list) {
 			if ( FolderDiff.Entry.Type.DELETED.equals(entry.getType()) ) {
@@ -178,7 +194,6 @@ public class FSSCM extends SCM {
 	 */
 	private boolean poll(AbstractProject<?, ?> project, Launcher launcher, FilePath workspace, TaskListener listener) 
 	    throws IOException, InterruptedException {
-		
 		long start = System.currentTimeMillis();
 		
 		PrintStream log = launcher.getListener().getLogger();
@@ -186,13 +201,13 @@ public class FSSCM extends SCM {
 		
 		AllowDeleteList allowDeleteList = new AllowDeleteList(project.getRootDir());
 		// we will only delete a file if it is listed in the allowDeleteList
-		// ie. we will only delete a file if it is copied by us
+		// i.e. we will only delete a file if it is copied by us
 		if ( allowDeleteList.fileExists() ) {
 			allowDeleteList.load();
 		} else {
 			// watch list save file doesn't exist
-			// we will assuem all existing files are under watch 
-			// ie. everything can be deleted 
+			// we will assume all existing files are under watch 
+			// i.e. everything can be deleted 
 			Set<String> existingFiles = workspace.act(new RemoteListDir());
 			allowDeleteList.setList(existingFiles);
 		}
@@ -201,11 +216,16 @@ public class FSSCM extends SCM {
 		setupRemoteFolderDiff(callable, project, allowDeleteList.getList());
 		
 		boolean changed = workspace.act(callable);
+		
+		changedFiles = callable.getChangedFiles();
+		System.out.println("HERE ARE CHANGED FILES(" 
+                + changedFiles.size() + ") >> " + changedFiles);
+		
 		String str = callable.getLog();
 		if ( str.length() > 0 ) log.println(str);
 		log.println("FSSCM.pollChange return " + changed);
 
-		log.println("FSSCM.poolChange completed in " + formatDuration(System.currentTimeMillis()-start));		
+		log.println("FSSCM.pollChange completed in " + formatDuration(System.currentTimeMillis()-start));		
 		return changed;
 	}
 	
@@ -303,16 +323,45 @@ public class FSSCM extends SCM {
     }
 
     @Override
-    protected PollingResult compareRemoteRevisionWith(
-            AbstractProject<?, ?> project, Launcher launcher,
+    public PollingResult compareRemoteRevisionWith(
+            Job<?, ?> project, Launcher launcher,
             FilePath workspace, TaskListener listener, SCMRevisionState baseline)
             throws IOException, InterruptedException {
         
-        if(poll(project, launcher, workspace, listener)) {
+        System.out.println("FSSCM >> compareRemoteRevisionWith()");
+        
+        if(poll((AbstractProject) project, launcher, workspace, listener)) {
             return PollingResult.SIGNIFICANT;
         } else {
             return PollingResult.NO_CHANGES;
         }
     }
-
+    
+    
+    @Override
+    public boolean canDistinctAuthors() {
+        return true;
+    }
+    
+    @Override
+    public List<CommitAuthor> getCommitAuthors() {
+        List<CommitAuthor> authors = new ArrayList<>();
+        try {
+            for (FolderDiff.Entry entry : changedFiles) {
+                Path filePath = Paths.get(path 
+                        + System.getProperty("file.separator") + entry.getFilename());
+                FileOwnerAttributeView ownerAttributeView = 
+                        Files.getFileAttributeView(filePath,
+                                FileOwnerAttributeView.class);
+                UserPrincipal owner = ownerAttributeView.getOwner(); // !!! It should be modifier and not owner
+                authors.add(new CommitAuthor(owner.getName()));
+                System.out.println("owner: " + owner.getName());
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return authors;
+    }
 }

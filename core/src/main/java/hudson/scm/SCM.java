@@ -391,7 +391,7 @@ public abstract class SCM implements Describable<SCM>, ExtensionPoint {
 
     @Deprecated
     protected PollingResult compareRemoteRevisionWith(AbstractProject<?,?> project, Launcher launcher, FilePath workspace, TaskListener listener, SCMRevisionState baseline) throws IOException, InterruptedException {
-        return compareRemoteRevisionWith((Job) project, launcher, workspace, listener, baseline);
+        return compareRemoteRevisionAuthorWith((Job) project, launcher, workspace, listener, baseline);
     }
 
     /**
@@ -407,7 +407,8 @@ public abstract class SCM implements Describable<SCM>, ExtensionPoint {
             } else {
                 baseline2 = calcRevisionsFromBuild(project.getLastBuild(), launcher, listener);
             }
-
+            
+            System.out.println("SCM >> poll() >> compareRemoteRevisionWith()");
             return compareRemoteRevisionWith(project, launcher, workspace, listener, baseline2);
         } else {
             return pollChanges(project,launcher,workspace,listener) ? PollingResult.SIGNIFICANT : PollingResult.NO_CHANGES;
@@ -758,15 +759,15 @@ public abstract class SCM implements Describable<SCM>, ExtensionPoint {
 
     
     /**
-     * Returns true if the system implemented new interface
-     * for SCM and can say what user made last commit.
+     * Returns true if the system has implemented getCommitAuthors()
+     * method and can say what user made last commits.
      * <p>
      * This flag affects the behavior of code management system.
      * If the system claims that it can distinct authors, it is
-     * assumed that method getCommitAuthor() is also implemented.
+     * assumed that method getCommitAuthors() is also implemented.
      * If not the system's behavior will be the same as for
      * canDistinctAuthors() == false.
-     * @return
+     * @return boolean
      */
     public boolean canDistinctAuthors() {
         return false;
@@ -777,42 +778,66 @@ public abstract class SCM implements Describable<SCM>, ExtensionPoint {
      * Returns the author of the last commit.
      * This method should be overrided, if the system
      * claims that it can distinct authors.
-     * @return CommitAuthor
+     * @return List<CommitAuthor>
      */
-    public CommitAuthor getCommitAuthor() {
+    public List<CommitAuthor> getCommitAuthors() {
         return null;
     }
     
     
     /**
      * The implementation of determining rather the author
-     * of the last commit is allowed to trigger a build
-     * @return
+     * of the last commits is allowed to trigger a build
+     * @return boolean
      */
     public final boolean isCommitAuthorAllowedToBuild() {
-        CommitAuthor author = getCommitAuthor();
-        if (author == null) {
+        List<CommitAuthor> authors = getCommitAuthors();
+        if (authors == null) {
             return true;
         }
         List<String> unAuthors = j.getUnathorizedAuthors();
         
         for (String unAuthor : unAuthors) {
-            if (author.getName().equals(unAuthor)) {
-                return false;
+            for (CommitAuthor author : authors) {
+                if (author.getName().equals(unAuthor)) {
+                    return false;
+                }
             }
         }
         return true;
     }
     
     
-    /** Feature 3 - modification - in process */
-    public final PollingResult compareRemoteRevisionAuthorWith(@Nonnull Job<?,?> project, @Nullable Launcher launcher, @Nullable FilePath workspace, @Nonnull TaskListener listener, @Nonnull SCMRevisionState baseline) throws IOException, InterruptedException {
-        PollingResult result = compareRemoteRevisionWith(project, launcher, workspace, listener, baseline);
+    /**
+     * This method is used instead compareRemoteRevisionWith() and is a
+     * wrapper for that method. If the system canDistinctAuthors(), than
+     * authors of last commits (i.e. after previous checkpoint) will be
+     * retrieved and check performed rather they are allowed to build
+     * the project. If not - PollingReault.UNAUTHORISED_USER will be returned,
+     * if yes - usual compareRemoteRevisionWith() method will be invoked. 
+     * @param project
+     * @param launcher
+     * @param workspace
+     * @param listener
+     * @param baseline
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    public final PollingResult compareRemoteRevisionAuthorWith(
+            @Nonnull Job<?,?> project, @Nullable Launcher launcher,
+            @Nullable FilePath workspace, @Nonnull TaskListener listener,
+            @Nonnull SCMRevisionState baseline)
+                    throws IOException, InterruptedException {
+        System.out.println("SCM >> compareRemoteRevisionAuthorWith()");
         
-        if (canDistinctAuthors()) {
-            if (!isCommitAuthorAllowedToBuild()) {
-                return PollingResult.UNAUTHORIZED_USER;
-            }
+        // Should be invoked at first or else we will not
+        // know what changes were done
+        PollingResult result = compareRemoteRevisionWith(
+                project, launcher, workspace, listener, baseline);
+        
+        if (canDistinctAuthors() && !isCommitAuthorAllowedToBuild()) {
+            result = PollingResult.UNAUTHORIZED_USER;
         }
         
         return result;

@@ -567,8 +567,8 @@ public class SCMTrigger extends Trigger<Item> {
             try {
                 // to make sure that the log file contains up-to-date text,
                 // don't do buffering.
-                StreamTaskListener listener = new StreamTaskListener(getLogFile());
-
+                StreamTaskListener listener = new StreamTaskListener(getLogFile());                
+                
                 try {
                     PrintStream logger = listener.getLogger();
                     long start = System.currentTimeMillis();

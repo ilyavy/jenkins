@@ -75,15 +75,37 @@ public class RemoteFolderDiff extends FolderDiff {
 	
 	public static class PollChange extends RemoteFolderDiff implements FileCallable<Boolean> {
 		
-		private static final long serialVersionUID = 1L; 
+		private static final long serialVersionUID = 1L;
+		
+		private List<FolderDiff.Entry> changedFiles =
+		        new ArrayList<FolderDiff.Entry>();
 		
 		public Boolean invoke(File workspace, VirtualChannel channel) throws IOException {
-			setDstPath(workspace.getAbsolutePath());
-			List<FolderDiff.Entry> newFiles = getNewOrModifiedFiles(lastBuildTime, true, true);
-			if ( newFiles.size() > 0 ) return Boolean.TRUE;
-			if ( -1 == lastSuccessfulBuildTime ) return Boolean.FALSE;
-			List<FolderDiff.Entry> delFiles = getDeletedFiles(lastSuccessfulBuildTime, true, true);
-			return delFiles.size() > 0;
+			Boolean result = Boolean.FALSE;
+		    setDstPath(workspace.getAbsolutePath());
+		    
+			List<FolderDiff.Entry> newFiles = 
+			        getNewOrModifiedFiles(lastBuildTime, true, true);
+			List<FolderDiff.Entry> delFiles = 
+                    getDeletedFiles(lastSuccessfulBuildTime, true, true);
+			
+            changedFiles.addAll(newFiles);
+            changedFiles.addAll(delFiles);
+			
+			if (newFiles.size() > 0) {
+			    result = Boolean.TRUE;
+			} else if (-1 == lastSuccessfulBuildTime) {
+			    result = Boolean.FALSE;
+			} else {
+			    result = delFiles.size() > 0;
+			}
+			
+			return result;
+		}
+		
+		
+		public List<FolderDiff.Entry> getChangedFiles() {
+		    return changedFiles;
 		}
 
         @Override
@@ -103,6 +125,10 @@ public class RemoteFolderDiff extends FolderDiff {
 			List<FolderDiff.Entry> files = new ArrayList<FolderDiff.Entry>();
 			files.addAll(newFiles);
 			files.addAll(delFiles);
+			
+			System.out.println("CHECKOUT >> HERE ARE CHANGED FILES(" 
+                    + files.size() + ") >> " + files);
+			
 			return files;
 		}
 

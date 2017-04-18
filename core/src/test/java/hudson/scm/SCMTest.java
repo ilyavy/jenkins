@@ -31,8 +31,11 @@ public class SCMTest {
     
     private final static String TEST_AUTHOR_NAME = "TestAuthor";
     
-    private static CommitAuthor commitAuthor =
-            new CommitAuthor(TEST_AUTHOR_NAME);
+    private static List<CommitAuthor> commitAuthor;
+    static {
+        commitAuthor = new ArrayList<CommitAuthor>();
+        commitAuthor.add(new CommitAuthor(TEST_AUTHOR_NAME));
+    }
     
     private static boolean CAN_DISTINCT_AUTHORS = false;
     
@@ -114,7 +117,7 @@ public class SCMTest {
     public static class SCMForTests extends SCM {
         
         @Override
-        public CommitAuthor getCommitAuthor() {
+        public List<CommitAuthor> getCommitAuthors() {
             return commitAuthor;
         }
         
