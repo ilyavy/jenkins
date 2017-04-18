@@ -13,24 +13,20 @@ import javax.annotation.Nullable;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import hudson.FilePath;
 import hudson.Launcher;
-import hudson.Util;
-import hudson.model.AbstractProject;
 import hudson.model.Job;
 import hudson.model.TaskListener;
-import jenkins.model.Jenkins;
-
 
 @RunWith(MockitoJUnitRunner.class)
 public class SCMTest {
     
     private final static String TEST_AUTHOR_NAME = "TestAuthor";
     
+    private static List<String> unAuthors;
     private static List<CommitAuthor> commitAuthor;
     static {
         commitAuthor = new ArrayList<CommitAuthor>();
@@ -39,12 +35,8 @@ public class SCMTest {
     
     private static boolean CAN_DISTINCT_AUTHORS = false;
     
-    @Mock
-    private Jenkins j;
     
-    
-    @InjectMocks
-    private SCMForTests scm;
+    private SCMForTests scm = new SCMForTests();
     
     
     @Mock
@@ -67,8 +59,7 @@ public class SCMTest {
     
     @Test
     public void isCommitAuthorAllowedToBuildTest() {
-        List<String> unAuthors = new ArrayList<String>();
-        when(j.getUnathorizedAuthors()).thenReturn(unAuthors);
+        unAuthors = new ArrayList<String>();
         assertEquals(true, scm.isCommitAuthorAllowedToBuild());
         
         unAuthors.add(TEST_AUTHOR_NAME);
@@ -80,9 +71,8 @@ public class SCMTest {
     public void compareRemoteRevisionAuthorWithTest() throws Exception {
         // Init
         PollingResult res;
-        List<String> unAuthors = new ArrayList<String>();
-        unAuthors.add(TEST_AUTHOR_NAME);
-        when(j.getUnathorizedAuthors()).thenReturn(unAuthors);
+        unAuthors = new ArrayList<String>();
+        unAuthors.add(TEST_AUTHOR_NAME);        
         
         // The system cannot distinct authors of commits
         CAN_DISTINCT_AUTHORS = false;
@@ -131,6 +121,12 @@ public class SCMTest {
         @Override
         public boolean canDistinctAuthors() {
             return CAN_DISTINCT_AUTHORS;
+        }
+        
+        
+        @Override
+        protected List<String> getUnathorizedAuthors() {
+            return unAuthors;
         }
         
         

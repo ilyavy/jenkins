@@ -52,6 +52,7 @@ import hudson.util.IOUtils;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -86,8 +87,6 @@ import org.kohsuke.stapler.export.ExportedBean;
  */
 @ExportedBean
 public abstract class SCM implements Describable<SCM>, ExtensionPoint {
-    
-    private Jenkins j = Jenkins.getInstance(); 
     
     /** JENKINS-35098: discouraged */
     @SuppressWarnings("FieldMayBeFinal")
@@ -759,6 +758,15 @@ public abstract class SCM implements Describable<SCM>, ExtensionPoint {
 
     
     /**
+     * Returns the list of unathorized authors 
+     * @return
+     */
+    protected List<String> getUnathorizedAuthors() {
+        return Jenkins.getInstance().getUnathorizedAuthors();
+    }
+    
+    
+    /**
      * Returns true if the system has implemented getCommitAuthors()
      * method and can say what user made last commits.
      * <p>
@@ -795,8 +803,7 @@ public abstract class SCM implements Describable<SCM>, ExtensionPoint {
         if (authors == null) {
             return true;
         }
-        List<String> unAuthors = j.getUnathorizedAuthors();
-        
+        List<String> unAuthors = getUnathorizedAuthors();        
         for (String unAuthor : unAuthors) {
             for (CommitAuthor author : authors) {
                 if (author.getName().equals(unAuthor)) {
@@ -829,7 +836,6 @@ public abstract class SCM implements Describable<SCM>, ExtensionPoint {
             @Nullable FilePath workspace, @Nonnull TaskListener listener,
             @Nonnull SCMRevisionState baseline)
                     throws IOException, InterruptedException {
-        System.out.println("SCM >> compareRemoteRevisionAuthorWith()");
         
         // Should be invoked at first or else we will not
         // know what changes were done
@@ -838,6 +844,7 @@ public abstract class SCM implements Describable<SCM>, ExtensionPoint {
         
         if (canDistinctAuthors() && !isCommitAuthorAllowedToBuild()) {
             result = PollingResult.UNAUTHORIZED_USER;
+            System.out.println("UNAUTHORIZED_USER error");
         }
         
         return result;

@@ -328,8 +328,6 @@ public class FSSCM extends SCM {
             FilePath workspace, TaskListener listener, SCMRevisionState baseline)
             throws IOException, InterruptedException {
         
-        System.out.println("FSSCM >> compareRemoteRevisionWith()");
-        
         if(poll((AbstractProject) project, launcher, workspace, listener)) {
             return PollingResult.SIGNIFICANT;
         } else {
@@ -353,7 +351,7 @@ public class FSSCM extends SCM {
                 FileOwnerAttributeView ownerAttributeView = 
                         Files.getFileAttributeView(filePath,
                                 FileOwnerAttributeView.class);
-                UserPrincipal owner = ownerAttributeView.getOwner(); // !!! It should be modifier and not owner
+                UserPrincipal owner = ownerAttributeView.getOwner();
                 authors.add(new CommitAuthor(owner.getName()));
                 System.out.println("owner: " + owner.getName());
             }

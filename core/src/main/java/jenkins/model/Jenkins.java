@@ -444,7 +444,7 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
     }
 
     /**
-     * On/off Telegram notifications
+     * On/off commits' authors restrictions
      */
     private boolean unathorizedAuthorsOn = true;
 
@@ -462,7 +462,12 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
     }
     
     public List<String> getUnathorizedAuthors() {
-        System.out.println(unathorizedAuthorsString);
+        System.out.println("UNASTR >> ");
+        System.out.println(isUnathorizedAuthorsOn());
+        System.out.println(getUnathorizedAuthorsString());
+        
+        System.out.println(telegramBotID);
+        
         if (unathorizedAuthorsString == null) {
             return new ArrayList<String>();
         }
@@ -3677,6 +3682,9 @@ public class Jenkins extends AbstractCIBase implements DirectlyModifiableTopLeve
 
             unathorizedAuthorsOn = json.getBoolean("unauthorized_users_on_off");
             unathorizedAuthorsString = json.getString("unallowed_users");
+            
+            System.out.println("SAVED >> ");
+            System.out.println(unathorizedAuthorsString);
 
             boolean result = true;
             for (Descriptor<?> d : Functions.getSortedDescriptorsForGlobalConfigUnclassified())

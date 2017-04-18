@@ -76,13 +76,13 @@ THE SOFTWARE.
       </f:entry>
 
       <f:entry title="Building restrictions" help="">
-            </f:entry>
-              <f:entry title="Not build this user's commits" field="unauthorized_users_on_off">
-                <f:checkbox checked="${it.unathorizedAuthorsOn}"/>
-            </f:entry>
-              <f:entry title="Unathorized users" field="unallowed_users">
-                <f:textbox value="${it.unathorizedAuthorsString}"/>
-            </f:entry>
+      </f:entry>
+        <f:entry title="Not build this user's commits" field="unauthorized_users_on_off">
+          <f:checkbox checked="${it.unathorizedAuthorsOn}"/>
+        </f:entry>
+        <f:entry title="Unathorized users" field="unallowed_users">
+          <f:textbox value="${it.unathorizedAuthorsString}"/>
+        </f:entry>
     
       <f:bottomButtonBar>
         <f:submit value="${%Save}" />
