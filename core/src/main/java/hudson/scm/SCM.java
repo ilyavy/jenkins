@@ -761,7 +761,13 @@ public abstract class SCM implements Describable<SCM>, ExtensionPoint {
      * @return
      */
     protected List<String> getUnathorizedAuthors() {
-        return Jenkins.getInstance().getUnathorizedAuthors();
+        List<String> result;
+        if (Jenkins.getInstance().isUnathorizedAuthorsOn()) {
+            result = Jenkins.getInstance().getUnathorizedAuthors();
+        } else {
+            result = new ArrayList<>();
+        }
+        return result;
     }
     
     
